@@ -1,0 +1,84 @@
+.centered-title {
+    text-align: center;
+}
+
+
+.centered-title2 {
+    text-align: center;
+    color: #ffffff;
+}
+
+.navbar {
+    /*background-color: #000000;*/
+    background-color: #000000;
+}
+
+.toptoptop {
+    background-color: #000000;
+}
+
+
+.imgicon {
+    size: 50px;
+    /*text-align:center;*/
+}
+
+.currentstep {
+    size: 400px;
+}
+.h2 {
+    size: 400px;
+}
+
+.navbar-fixed-top {
+    padding: 10px;
+    height: 10px;
+    transition: background 0.5s ease-in-out 0s, padding 0.5s ease-in-out 0s;
+}
+
+.with-borders {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-left: 1px solid #777777;
+    border-right: 1px solid #777777;
+}
+
+.bottom-pad {
+    padding-bottom: 150px;
+}
+
+img {
+    display: block;
+    margin: auto;
+    width: 60%;
+}
+
+
+.centered-img {
+    display: block;
+    margin: auto;
+    width: 60%;
+}
+
+.landing-img {
+    display: block;
+    margin: auto;
+    height: 20%;
+}
+
+@media only screen and (max-width: 1200px) {
+.steps, .ingredients, .notes {
+        font-size: 2.5em;
+
+
+}
+p[class|="centered-title"] {
+    font-size: 2.5em;
+}
+
+.with-borders {
+    border-left: 0px solid #777777;
+    border-right: 0px solid #777777;
+}
+
+}

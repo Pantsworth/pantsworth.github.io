@@ -1,0 +1,26 @@
+{
+  "name": "pantsworth.github.io",
+  "version": "1.0.0",
+  "description": "Personal Site of Michael Nowakowski",
+  "main": "index.js",
+  "scripts": {
+    "develop": "webpack --mode development --watch",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pantsworth/pantsworth.github.io.git"
+  },
+  "author": "Michael Nowakowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pantsworth/pantsworth.github.io/issues"
+  },
+  "homepage": "https://github.com/Pantsworth/pantsworth.github.io#readme",
+  "dependencies": {
+    "bootstrap": "4.3.1",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "simple-lightbox": "2.0.1"
+  }
+}

@@ -1,0 +1,72 @@
+/*!
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+
+.centered-title {
+    text-align: center;
+}
+
+
+.centered-title2 {
+    text-align: center;
+    color: #ffffff;
+}
+
+.navbar {
+    background-color: #000000;
+}
+
+.toptoptop {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.timeline {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.imgicon {
+    size: 50px;
+    /*text-align:center;*/
+}
+
+.currentstep {
+    size: 400px;
+}
+.h2 {
+    size: 400px;
+}
+
+.navbar-fixed-top {
+    padding: 10px;
+    height: 10px;
+    transition: background 0.5s ease-in-out 0s, padding 0.5s ease-in-out 0s;
+}
+
+.with-borders {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-left: 1px solid #777777;
+    border-right: 1px solid #777777;
+}
+.top-pad {
+    padding-top: 50px;
+}
+.bottom-pad {
+    padding-bottom: 150px;
+}
+/*.navbar-brand {*/
+    /*float: left;*/
+    /*font-size: 18px;*/
+    /*height: 10px;*/
+    /*line-height: 2px;*/
+    /*padding: 2px;*/
+/*}*/
+
+/*@navbar-height: 20px;*/

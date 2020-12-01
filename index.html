@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link href="img/favicon.ico" rel="icon" type="image/x-icon" />
+
+<title>NOWAKOWSKI STUDIOS</title>
+
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="node_modules/simple-lightbox/dist/simpleLightbox.min.css" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Monoton|Permanent+Marker|Roboto+Mono" rel="stylesheet">
+<link href="css/gallery.css" rel="stylesheet">
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/simple-lightbox/dist/simpleLightbox.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-29434182-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-29434182-2');
+</script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top"
+        style="background-color: black; font-family: 'Permanent Marker', cursive;">
+        <a style="font-family: 'Monoton', cursive;" class="navbar-brand" href="#">Michael Nowakowski</a>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="still.html">Still</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="motion.html">Motion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="software.html">Software</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="projectiondesign.html">Projection Design</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div style="padding-top: 3%; padding-bottom: 0.5%" id="buttons" class="d-flex justify-content-center">
+    </div>
+
+    <div class="row" id="links">
+        <div class="column" id="column0">
+        </div>
+        <div class="column" id="column1">
+        </div>
+        <div class="column" id="column2">
+        </div>
+        <div class="column" id="column3">
+        </div>
+    </div>
+</body>
+<script>
+    // only the featured album on the front page
+    const album_name_map = {
+        "Featured": "72157666515677215",
+    };
+
+    function load_photos(album_name) {
+        if (!album_name_map[album_name]) {
+            throw Error("no album with name: " + album_name);
+        }
+        set_selected_button(album_name);
+
+        // grab the album
+        $.ajax({
+            url: 'https://api.flickr.com/services/rest/',
+            data: {
+                format: 'json',
+                method: 'flickr.photosets.getPhotos',
+                photoset_id: album_name_map[album_name],
+                api_key: 'b305c0e7c417b86b9bd2ea94074475e7',
+                // this is all the photo URLs (url_h is undocumented which is rad)
+                // https://www.flickr.com/services/api/flickr.photosets.getPhotos.html
+                extras: "url_s,url_t,url_m,url_o,url_h,url_b", 
+            },
+            dataType: 'jsonp',
+            jsonp: 'jsoncallback'
+        }).done(function (result) {
+            // column selectors
+            const column_map = {
+                0: $('#column0'),
+                1: $('#column1'),
+                2: $('#column2'),
+                3: $('#column3')
+            };
+
+            for (column of Object.keys(column_map)) {
+                column_map[column].empty();
+            }
+            
+            // put each of the images into a column
+            $.each(result.photoset.photo, function (index, photo) {
+                let index_mod = index % 4;
+                let new_image = $("<div>").attr('class', 'grid-item').append(
+                    $('<a/>').append($('<img width="100%;">').prop('src', photo.url_m))
+                        .prop('href', photo.url_h)
+                        .attr('class', 'lightbox-image')
+                        .attr('data-lightbox', photo.id));
+                new_image.appendTo(column_map[index_mod]);
+            });
+
+        }).then(function () {
+            // make lightboxes
+            const lightbox = $('.lightbox-image').simpleLightbox(
+                {'animationSpeed': 100, 
+                'animationSlide': false }
+                );
+        });
+    }
+
+    function set_selected_button(album_name) {
+        const album_name_map_keys = Object.keys(album_name_map);
+        for (let i = 0; i < album_name_map_keys.length; i++) {
+            let button_to_update = $(`#${album_name_map_keys[i]}`);
+            if (album_name_map_keys[i] == album_name) {
+                button_to_update.removeClass("btn-outline-dark");
+                button_to_update.addClass("btn-dark");
+            }
+            else {
+                button_to_update.removeClass("btn-dark");
+                button_to_update.addClass("btn-outline-dark");
+            }
+        }
+    }
+    load_photos("Featured");
+
+</script>
+
+</html>

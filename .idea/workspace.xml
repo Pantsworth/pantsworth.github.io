@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="762abe17-3f62-4d2d-a1aa-af56c3dc3d76" name="Default" comment="big cleanup + dependency updates + new googz analytics tag" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="pantsworth.github.io" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/Pantsworth/pantsworth.github.io.git" />
+      </set>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1504" />
+    <option name="y" value="23" />
+    <option name="width" value="1504" />
+    <option name="height" value="1665" />
+  </component>
+  <component name="ProjectId" id="1l2mMzAJlnRt6k5IAI8U8X8qhVo" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/img" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="762abe17-3f62-4d2d-a1aa-af56c3dc3d76" name="Default" comment="" />
+      <created>1465472490942</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1465472490942</updated>
+      <workItem from="1465472492996" duration="242000" />
+      <workItem from="1524942434785" duration="7955000" />
+      <workItem from="1525325205187" duration="309000" />
+      <workItem from="1606803516815" duration="3901000" />
+    </task>
+    <task id="LOCAL-00001" summary="big cleanup + dependency updates + new googz analytics tag">
+      <created>1606806500622</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606806500622</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="big cleanup + dependency updates + new googz analytics tag" />
+    <option name="LAST_COMMIT_MESSAGE" value="big cleanup + dependency updates + new googz analytics tag" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2258" y="710" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606804994653">
+      <screen x="0" y="23" width="3360" height="1867" />
+    </state>
+    <state x="2258" y="710" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/3360.23.3360.1867/0.23.3360.1867@0.23.3360.1867" timestamp="1606804994653" />
+    <state x="1920" y="559" width="1292" height="1087" key="CommitChangelistDialog2" timestamp="1606806500193">
+      <screen x="0" y="23" width="3360" height="1867" />
+    </state>
+    <state x="1920" y="559" width="1292" height="1087" key="CommitChangelistDialog2/3360.23.3360.1867/0.23.3360.1867@0.23.3360.1867" timestamp="1606806500193" />
+    <state x="672" y="199" key="DiffContextDialog" timestamp="1606803564964">
+      <screen x="0" y="23" width="3360" height="1867" />
+    </state>
+    <state x="672" y="199" key="DiffContextDialog/3360.23.3360.1867/0.23.3360.1867@0.23.3360.1867" timestamp="1606803564964" />
+    <state x="2269" y="685" key="RollbackChangesDialog" timestamp="1606803570424">
+      <screen x="0" y="23" width="3360" height="1867" />
+    </state>
+    <state x="2269" y="685" key="RollbackChangesDialog/3360.23.3360.1867/0.23.3360.1867@0.23.3360.1867" timestamp="1606803570424" />
+    <state x="2120" y="696" key="Vcs.Push.Dialog.v2" timestamp="1606806502202">
+      <screen x="0" y="23" width="3360" height="1867" />
+    </state>
+    <state x="2120" y="696" key="Vcs.Push.Dialog.v2/3360.23.3360.1867/0.23.3360.1867@0.23.3360.1867" timestamp="1606806502202" />
+    <state x="1018" y="289" width="1074" height="824" key="find.popup" timestamp="1606806091221">
+      <screen x="0" y="23" width="3360" height="1867" />
+    </state>
+    <state x="1018" y="289" width="1074" height="824" key="find.popup/3360.23.3360.1867/0.23.3360.1867@0.23.3360.1867" timestamp="1606806091221" />
+    <state x="2177" y="755" key="git4idea.merge.GitPullDialog" timestamp="1606806375605">
+      <screen x="0" y="23" width="3360" height="1867" />
+    </state>
+    <state x="2177" y="755" key="git4idea.merge.GitPullDialog/3360.23.3360.1867/0.23.3360.1867@0.23.3360.1867" timestamp="1606806375605" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>io|github|pantsworth</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

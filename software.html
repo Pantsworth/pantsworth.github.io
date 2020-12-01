@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="img/favicon.ico" rel="icon" type="image/x-icon"/>
+
+    <title>NOWAKOWSKI STUDIOS</title>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="node_modules/simple-lightbox/dist/simpleLightbox.min.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Monoton|Permanent+Marker|Roboto+Mono" rel="stylesheet">
+    <link href="css/gallery.css" rel="stylesheet">
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/simple-lightbox/dist/simpleLightbox.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-29434182-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-29434182-2');
+    </script>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top"
+     style="background-color: black; font-family: 'Permanent Marker', cursive;">
+    <a style="font-family: 'Monoton', cursive;" class="navbar-brand" href="index.html">Michael Nowakowski</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="still.html">Still</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="motion.html">Motion</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="software.html">Software</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="projectiondesign.html">Projection Design</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<section style="padding-top: 60px;" id="software">
+    <aside class="bg-black">
+        <div class="container">
+            <h1 class="marker-text text-center">Software</h1>
+
+            <div class="call-to-action">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <img src="img/style_2.jpg" width="100%" alt="">
+                    </div>
+                    <div class="col-sm-6">
+                        <img src="img/still_there_orig.jpg" width="100%" alt="">
+                    </div>
+                </div>
+                <img src="img/still_there_1.jpg" width="100%" alt="">
+                <h5 class="text-center">Visuals for Still There (2016), generated via
+                    <a href="https://github.com/yusuketomoto/chainer-fast-neuralstyle">chainer-fast-neuralstyle</a>
+                </h5>
+                <br>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <h2 class="marker-text text-center">Toolbox</h2>
+
+                        <p>
+                            <b>Languages:</b> Python, Javascript/HTML/CSS
+                            <br>
+                            <b>Software Tools:</b> Git, Heroku, AWS |
+                            <b>IDEs:</b> Pycharm, and WebStorm.
+                            <br>
+                            <br>
+                            <b>Past Experience: </b> HCI, WebSockets, Front-End Design, Backend, Image Processing, Video
+                            processing, OpenCV, Machine Learning
+                            <br>
+                        </p>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+            </div>
+    </aside>
+    <div class="container-fluid">
+        <div class="container text-center">
+            <br>
+            <br>
+            <h2 class="marker-text">Projects</h2>
+            <br>
+        </div>
+        <div class="container text-center">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img src="img/software/slitscans/train_width_720.gif" height="300px" width="100%" alt="">
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="img/software/slitscans/train_height_720.gif" height="300px" width="100%" alt="">
+                        </div>
+                    </div>
+
+                    <h4 class="text-center">
+                        <br>
+                        <a href="https://github.com/Pantsworth/slit_scanner_darkly">SlitScannr</a>
+
+                    </h4>
+                    <p class="text-center">
+
+                        Created for EECS 395: Computational Photography Seminar. A easy-to-use realization of a complex
+                        imaging technique in which
+                        each vertical column of pixels in the image represents the same place, at a different time.
+
+                    </p>
+                </div>
+            </div>
+            <br>
+            <div class="col-sm-12">
+                <div class="card">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/Yhy1uc9s8IU" frameborder="0"
+                            allow="autoplay; encrypted-media"
+                            allowfullscreen></iframe>
+                    <p>
+                    <h4>
+                        <a href="https://github.com/Pantsworth/temporal-median-video">Temporal Median Video</a>
+                    </h4>
+                    Python program for processing a temporal median filter effect across a set of frames from a video.
+
+                    </p>
+                </div>
+            </div>
+            <br>
+            <div class="col-sm-12">
+                <div class="card">
+                    <br>
+                    <h4>
+                        <a href="https://github.com/Pantsworth/flask-mongo-boilerplate">Flask + MongoDB Boilerplate
+                            WebApp</a>
+
+                    </h4>
+                    <p>
+
+
+                        A quick web application designed to make it easy to build a quick and responsive application
+                        using Flask and MongoDB, hosted
+                        on Heroku. It's intended as boilerplate code for quickly developing cool features on the front
+                        or backend, without having to worry about how to make them communicate (unless you want sockets.
+                        I might do a version with sockets soon). Uses Flask, Flask-Restful, MongoDB, Heroku, and some
+                        of the fun new Javascript data collection APIs. Also the least pretty frontend of all time.
+                    </p>
+                </div>
+            </div>
+
+            <br>
+            <div class="row">
+
+
+                <div class="col-sm-6">
+                    <div class="card">
+                        <img src="img/software_small/souschefbot.jpg" width="100%" alt="">
+                        <h4>SousChefBot
+                        </h4>
+                        <p>
+                            A demo of a recipe website featuring Alexa-esque voice commands. Used
+                            <a href="https://wit.ai/">wit.ai API</a>
+                            and
+                            <a href="https://www.talater.com/annyang/">annyang</a>. Built as part of a Human-Computer
+                            Interaction class.
+                        </p>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="card">
+                        <img src="img/software_small/gone_by_dawn.jpg" width="100%" alt="">
+                        <h4>
+                            Gone By Dawn
+                        </h4>
+                        <p>
+
+                            Team project for EECS 370: Game Design. A fast-paced top-down multiplayer game about
+                            graverobbing. Developed on a 4-person
+                            team as part of a Northwestern Game Design class. I focused on UI development, animation,
+                            and aesthetics – all the visuals in the game were created using stopmotion animation on real
+                            clay objects, which were later converted to sprites for Unity.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+</section>
+</body>
+
+</html>
