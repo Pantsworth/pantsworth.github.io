@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="762abe17-3f62-4d2d-a1aa-af56c3dc3d76" name="Default" comment="big cleanup + dependency updates + new googz analytics tag" />
+    <list default="true" id="762abe17-3f62-4d2d-a1aa-af56c3dc3d76" name="Default" comment="big cleanup + dependency updates + new googz analytics tag">
+      <change afterPath="$PROJECT_DIR$/generate_site.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projection_design.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/about.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/motion.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/projection_design.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/software.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/still.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/pantsworth.github.io.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pantsworth.github.io.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expenses.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/motion.html" beforeDir="false" afterPath="$PROJECT_DIR$/motion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectiondesign.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/software.html" beforeDir="false" afterPath="$PROJECT_DIR$/software.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/still.html" beforeDir="false" afterPath="$PROJECT_DIR$/still.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -16,8 +39,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -38,6 +62,12 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="2cc2agmd" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1504" />
     <option name="y" value="23" />
@@ -47,7 +77,6 @@
   <component name="ProjectId" id="1l2mMzAJlnRt6k5IAI8U8X8qhVo" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -58,10 +87,11 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -74,6 +104,17 @@
   <component name="RunManager">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -95,6 +136,7 @@
       </method>
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -109,6 +151,8 @@
       <workItem from="1524942434785" duration="7955000" />
       <workItem from="1525325205187" duration="309000" />
       <workItem from="1606803516815" duration="3901000" />
+      <workItem from="1606810129792" duration="515000" />
+      <workItem from="1628315382917" duration="5367000" />
     </task>
     <task id="LOCAL-00001" summary="big cleanup + dependency updates + new googz analytics tag">
       <created>1606806500622</created>
@@ -121,7 +165,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -133,40 +177,11 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="big cleanup + dependency updates + new googz analytics tag" />
     <option name="LAST_COMMIT_MESSAGE" value="big cleanup + dependency updates + new googz analytics tag" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="2258" y="710" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606804994653">
-      <screen x="0" y="23" width="3360" height="1867" />
-    </state>
-    <state x="2258" y="710" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/3360.23.3360.1867/0.23.3360.1867@0.23.3360.1867" timestamp="1606804994653" />
-    <state x="1920" y="559" width="1292" height="1087" key="CommitChangelistDialog2" timestamp="1606806500193">
-      <screen x="0" y="23" width="3360" height="1867" />
-    </state>
-    <state x="1920" y="559" width="1292" height="1087" key="CommitChangelistDialog2/3360.23.3360.1867/0.23.3360.1867@0.23.3360.1867" timestamp="1606806500193" />
-    <state x="672" y="199" key="DiffContextDialog" timestamp="1606803564964">
-      <screen x="0" y="23" width="3360" height="1867" />
-    </state>
-    <state x="672" y="199" key="DiffContextDialog/3360.23.3360.1867/0.23.3360.1867@0.23.3360.1867" timestamp="1606803564964" />
-    <state x="2269" y="685" key="RollbackChangesDialog" timestamp="1606803570424">
-      <screen x="0" y="23" width="3360" height="1867" />
-    </state>
-    <state x="2269" y="685" key="RollbackChangesDialog/3360.23.3360.1867/0.23.3360.1867@0.23.3360.1867" timestamp="1606803570424" />
-    <state x="2120" y="696" key="Vcs.Push.Dialog.v2" timestamp="1606806502202">
-      <screen x="0" y="23" width="3360" height="1867" />
-    </state>
-    <state x="2120" y="696" key="Vcs.Push.Dialog.v2/3360.23.3360.1867/0.23.3360.1867@0.23.3360.1867" timestamp="1606806502202" />
-    <state x="1018" y="289" width="1074" height="824" key="find.popup" timestamp="1606806091221">
-      <screen x="0" y="23" width="3360" height="1867" />
-    </state>
-    <state x="1018" y="289" width="1074" height="824" key="find.popup/3360.23.3360.1867/0.23.3360.1867@0.23.3360.1867" timestamp="1606806091221" />
-    <state x="2177" y="755" key="git4idea.merge.GitPullDialog" timestamp="1606806375605">
-      <screen x="0" y="23" width="3360" height="1867" />
-    </state>
-    <state x="2177" y="755" key="git4idea.merge.GitPullDialog/3360.23.3360.1867/0.23.3360.1867@0.23.3360.1867" timestamp="1606806375605" />
   </component>
   <component name="masterDetails">
     <states>
