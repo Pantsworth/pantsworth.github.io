@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="762abe17-3f62-4d2d-a1aa-af56c3dc3d76" name="Default" comment="big cleanup + dependency updates + new googz analytics tag">
-      <change afterPath="$PROJECT_DIR$/generate_site.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projection_design.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/about.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/motion.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/projection_design.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/software.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/still.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pantsworth.github.io.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pantsworth.github.io.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expenses.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/motion.html" beforeDir="false" afterPath="$PROJECT_DIR$/motion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectiondesign.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/software.html" beforeDir="false" afterPath="$PROJECT_DIR$/software.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/still.html" beforeDir="false" afterPath="$PROJECT_DIR$/still.html" afterDir="false" />
-    </list>
+    <list default="true" id="762abe17-3f62-4d2d-a1aa-af56c3dc3d76" name="Default" comment="use jinja to build pages, update &quot;About&quot; page" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -152,7 +132,7 @@
       <workItem from="1525325205187" duration="309000" />
       <workItem from="1606803516815" duration="3901000" />
       <workItem from="1606810129792" duration="515000" />
-      <workItem from="1628315382917" duration="5367000" />
+      <workItem from="1628315382917" duration="5683000" />
     </task>
     <task id="LOCAL-00001" summary="big cleanup + dependency updates + new googz analytics tag">
       <created>1606806500622</created>
@@ -161,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606806500622</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="use jinja to build pages, update &quot;About&quot; page">
+      <created>1628320958410</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1628320958410</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,7 +168,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="big cleanup + dependency updates + new googz analytics tag" />
-    <option name="LAST_COMMIT_MESSAGE" value="big cleanup + dependency updates + new googz analytics tag" />
+    <MESSAGE value="use jinja to build pages, update &quot;About&quot; page" />
+    <option name="LAST_COMMIT_MESSAGE" value="use jinja to build pages, update &quot;About&quot; page" />
   </component>
   <component name="masterDetails">
     <states>
