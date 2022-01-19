@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="762abe17-3f62-4d2d-a1aa-af56c3dc3d76" name="Default" comment="use jinja to build pages, update &quot;About&quot; page" />
+    <list default="true" id="762abe17-3f62-4d2d-a1aa-af56c3dc3d76" name="Default" comment="hide venv in .gitignore">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,13 +90,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -132,7 +136,7 @@
       <workItem from="1525325205187" duration="309000" />
       <workItem from="1606803516815" duration="3901000" />
       <workItem from="1606810129792" duration="515000" />
-      <workItem from="1628315382917" duration="5683000" />
+      <workItem from="1628315382917" duration="6724000" />
     </task>
     <task id="LOCAL-00001" summary="big cleanup + dependency updates + new googz analytics tag">
       <created>1606806500622</created>
@@ -148,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628320958410</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="hide venv in .gitignore">
+      <created>1628321113349</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1628321113349</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,7 +180,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="big cleanup + dependency updates + new googz analytics tag" />
     <MESSAGE value="use jinja to build pages, update &quot;About&quot; page" />
-    <option name="LAST_COMMIT_MESSAGE" value="use jinja to build pages, update &quot;About&quot; page" />
+    <MESSAGE value="hide venv in .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="hide venv in .gitignore" />
   </component>
   <component name="masterDetails">
     <states>
