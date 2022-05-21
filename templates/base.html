@@ -1,3 +1,4 @@
+{% block head %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +35,9 @@
         }
     </style>
 </head>
+{% endblock %}
 
+{% block body %}
 <body>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top"
      style="background-color: black; font-family: 'Permanent Marker', cursive;">
@@ -65,7 +68,6 @@
         </ul>
     </div>
 </nav>
-{% block body %}
 
 {% endblock %}
 {% block scripts %}

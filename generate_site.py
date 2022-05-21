@@ -38,12 +38,14 @@ def main():
                     input_image = Image.open(input_file_path)
                     input_image.thumbnail((3000,3000))
                     input_image.save(output_file_path, optimize=True, quality=75)
-                    input_image.thumbnail((600,600))
+                    input_image.thumbnail((800,800))
                     input_image.save(
                         output_file_path.replace(
                             os.path.basename(output_file_path).rsplit(".")[0],
                              os.path.basename(output_file_path).rsplit(".")[0] + thumb_suffix
-                        )
+                        ),
+                        optimize=True,
+                        quality=75,
                     )
 
     # render templates
@@ -66,8 +68,18 @@ def main():
                 'Performances':{"dir": "./img/flickr_optimized/still/performances", "images": []},
             }
 
-            for config in album_config:
-                album_config[config]["images"] = get_image_paths(album_config[config]["dir"])
+            projection_design_config = {
+                'Animal Style': {"dir": "./img/flickr_optimized/projection_design/animal_style", "images": []},
+                'American Idiot': {"dir": "./img/flickr_optimized/projection_design/american_idiot", "images": []},
+                'Bug': {"dir": "./img/flickr_optimized/projection_design/bug", "images": []},
+                'Hair': {"dir": "./img/flickr_optimized/projection_design/hair", "images": []},
+                'Spamalot': {"dir": "./img/flickr_optimized/projection_design/spam", "images": []},
+                'Tommy': {"dir": "./img/flickr_optimized/projection_design/tommy", "images": []},
+            }
+
+            for config in list(album_config.values()) + list(projection_design_config.values()):
+                config['images'] = get_image_paths(config["dir"])
+
 
             if template_file.name == 'still.html':
                 result_file.write(
@@ -84,6 +96,13 @@ def main():
                     )
                 )
 
+            elif template_file.name == 'projection_design.html':
+                result_file.write(
+                    jinja_template.render(
+                        name=template_file.name.replace(".html", ""),
+                        projection_design_config=projection_design_config,
+                    )
+                )
 
             else:
                 result_file.write(jinja_template.render(name=template_file.name.replace(".html", "")))

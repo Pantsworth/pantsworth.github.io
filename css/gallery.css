@@ -15,8 +15,8 @@ button:hover {
         transition: all .1s ease-in-out;
         filter: drop-shadow(0.5px 0.5px 3px);
     
-        transform: skewY(1deg);
-        transform: skewX(0.25deg);
+        /* transform: skewY(1deg);
+        transform: skewX(0.25deg); */
 }
 
 .header {
@@ -62,12 +62,12 @@ button:hover {
 
 .grid-item:hover {
     transition: all .1s ease-in-out;
-    filter: drop-shadow(0.5px 0.5px 3px);
+    filter: drop-shadow(1px 1px 3px);
 
     /*filter: drop-shadow(1px 1px 20px);  */
-    transform: skewY(1deg);
-    transform: skewX(0.25deg);
-    width: 100.75%;
+    /* transform: skewY(1deg);
+    transform: skewX(0.25deg); */
+    /* width: 102%; */
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
