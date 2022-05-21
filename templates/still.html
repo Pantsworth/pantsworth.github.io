@@ -61,7 +61,7 @@
             $.each(album_name_map[album_name].images, function (index, photo) {
                 let index_mod = index % 4;
                 let new_image = $("<div>").attr('class', 'grid-item').append(
-                    $('<a/>').append($('<img width="100%;">').prop('src', photo.replace(".jpg", "_thumb.jpg").replace(".png", "_thumb.png")))
+                    $('<a/>').append($('<img width="100%;" loading="lazy">').prop('src', photo.replace(".jpg", "_thumb.jpg").replace(".png", "_thumb.png")))
                         .prop('href', photo)
                         .attr('class', 'lightbox-image')
                         .attr('data-lightbox', photo.id));
