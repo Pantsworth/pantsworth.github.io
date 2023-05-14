@@ -24,7 +24,7 @@ def main():
 
 		recipe_thumb = """<div class='flex-item'>
 						<a href='{0}'>
-						<img style='height:150px;' src='{1}'>
+						<div class="flex-item-img"><img style='height:150px;' src='{1}'></div>
 						<h2 class='centered-title'>{2}</h2>
 						</a>
 						</div>""".format(r, 
@@ -37,14 +37,16 @@ def main():
 	<html lang="en">
 	<head>
 	    <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <title>RECIPES LANDING</title>
 		<link rel="stylesheet" type="text/css" href="css/recipestyle.css">
 		<script src="js/recipe.js"></script>
 	</head>
 	<body>
     <hr>
-    <h2 class="centered-title">RECIPES</h2>
-	<input oninput="filter_recipes(this.value);" type="text"></input>
+	<div class="recipe-title">
+	<input oninput="filter_recipes(this.value);" type="text" placeholder="Search..."></input>
+	</div>
     <hr>
 	<div class='flex-container'>
     {0}

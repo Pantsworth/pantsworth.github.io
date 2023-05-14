@@ -3,6 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="762abe17-3f62-4d2d-a1aa-af56c3dc3d76" name="Default" comment="lazy load">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/recipestyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/recipestyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/machine_learning.html" beforeDir="false" afterPath="$PROJECT_DIR$/machine_learning.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/motion.html" beforeDir="false" afterPath="$PROJECT_DIR$/motion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projection_design.html" beforeDir="false" afterPath="$PROJECT_DIR$/projection_design.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recipe_gen.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipe_gen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recipes.html" beforeDir="false" afterPath="$PROJECT_DIR$/recipes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/software.html" beforeDir="false" afterPath="$PROJECT_DIR$/software.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/still.html" beforeDir="false" afterPath="$PROJECT_DIR$/still.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,12 +72,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/mnowakowski/git_projects/pantsworth.github.io",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/img" />
@@ -129,6 +147,7 @@
       <workItem from="1606803516815" duration="3901000" />
       <workItem from="1606810129792" duration="515000" />
       <workItem from="1628315382917" duration="6724000" />
+      <workItem from="1684043419489" duration="383000" />
     </task>
     <task id="LOCAL-00001" summary="big cleanup + dependency updates + new googz analytics tag">
       <created>1606806500622</created>
@@ -196,6 +215,7 @@
     <MESSAGE value="self-host images (RIP flickr)" />
     <MESSAGE value="replace flickr image galleries. use 800px thumbnails instead of 600px." />
     <MESSAGE value="lazy load" />
+    <MESSAGE value="update recipe landing page + generation script" />
     <option name="LAST_COMMIT_MESSAGE" value="lazy load" />
   </component>
   <component name="masterDetails">
