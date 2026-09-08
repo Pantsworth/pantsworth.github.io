@@ -1,0 +1,29 @@
+# Michael Nowakowski
+
+> Senior software engineer - developer platforms, creative tools, and
+> content-creation pipelines. 8+ years across VFX/animation studios and platform
+> engineering. Based in Seattle, WA.
+
+This site (nowakowski-studios.com) is Michael's personal site: a brief bio, his
+professional work and resume, and creative projects (software, photography, and
+video). For the most detailed, machine-readable account of his work history, use
+the long-form resume below.
+
+## Work / resume
+- [Work](https://nowakowski-studios.com/work.html): resume page - experience,
+  skills, talks, and education (mirrors the PDF).
+- [Long-form resume](https://nowakowski-studios.com/resume-long.md): fuller,
+  machine-generated work-history summary (roles, projects, metrics). More detail
+  than any page on the site.
+- [Resume PDF](https://nowakowski-studios.com/files/michael-nowakowski-resume.pdf): downloadable one-page resume.
+
+## Creative projects
+- [Software](https://nowakowski-studios.com/software.html): creative coding, imaging experiments, and personal tools.
+- [Photos](https://nowakowski-studios.com/photos.html): photography (places, portraits, illustrative, performance).
+- [Videos](https://nowakowski-studios.com/videos.html): film and video work.
+
+## Contact
+- Email: michael.j.nowakowski@gmail.com
+- Web: https://nowakowski-studios.com
+- LinkedIn: https://linkedin.com/in/michael-j-nowakowski/
+- GitHub: https://github.com/Pantsworth

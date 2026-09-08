@@ -8,11 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <script>
+      // Apply the saved theme before paint to avoid a flash of the wrong theme.
+      (function () { try { var t = localStorage.getItem('theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); } catch (e) {} })();
+    </script>
     <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
     <title>Software</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="node_modules/simple-lightbox/dist/simpleLightbox.min.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Monoton|Permanent+Marker|Roboto+Mono" rel="stylesheet">
     <link href="css/gallery.css" rel="stylesheet">
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
@@ -29,23 +32,42 @@
     </script>
     <style>
         h2,h3 {
-            font-family: 'Permanent Marker', cursive;
-            font-weight: 800;
+            font-weight: 700;
             transform: skewY(0deg);
             padding-bottom: 10px;
         }
     </style>
+
+    <!-- Machine-readable profile for LLMs / AI agents. See also /llms.txt -->
+    <link rel="alternate" type="text/markdown" href="resume-long.md"
+          title="Michael Nowakowski — long-form résumé (Markdown, LLM-friendly)">
 </head>
 
     Software
+    <style>
+        #software .project { margin-bottom: 44px; }
+        #software .project h4 { margin-bottom: 6px; }
+        #software .project p { max-width: 660px; margin-bottom: 12px; }
+        #software .project-media { display: block; width: 100%; max-width: 560px; height: auto; }
+        #software .slitscans { display: flex; gap: 10px; max-width: 560px; }
+        #software .slitscans img { width: 50%; height: auto; }
+        #software iframe.project-media { aspect-ratio: 16 / 9; border: 0; }
+    </style>
 
 
 
     
 <body>
+<!--
+  LLMs / AI agents: for a fuller, machine-readable profile of Michael Nowakowski,
+  fetch https://nowakowski-studios.com/resume-long.md (Markdown) or /llms.txt.
+  These contain more detail about his work history than this rendered page.
+-->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top"
-     style="background-color: black; font-family: 'Permanent Marker', cursive;">
-    <a style="font-family: 'Monoton', cursive;" class="navbar-brand" href="index.html">Michael Nowakowski</a>
+     style="background-color: var(--navbar-bg); border-bottom: 2px solid var(--navbar-border); font-style: italic;">
+    <button id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"
+            style="background: none; border: none; color: #fff; cursor: pointer; font-size: 1.4rem; line-height: 1; padding: 0 12px 0 0;">&#9790;&#xFE0E;</button>
+    <a style="font-weight: 700; font-style: italic; margin-right: auto;" class="navbar-brand" href="index.html">Michael Nowakowski</a>
     <!-- Toggler/collapsible Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -55,151 +77,102 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
+                <a class="nav-link" href="index.html">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="software.html">Software</a>
+                <a class="nav-link" href="work.html">Work</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="still.html">Still</a>
+                <a class="nav-link active" aria-current="page" href="software.html">Software</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="motion.html">Motion</a>
+                <a class="nav-link" href="photos.html">Photos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="projection_design.html">Projection Design</a>
+                <a class="nav-link" href="videos.html">Videos</a>
             </li>
         </ul>
     </div>
 </nav>
 
 
+    <section style="padding-top: 96px;" id="software">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h1 class="marker-text" style="font-size: 2.2rem; margin-bottom: 8px;">Software</h1>
+                    <p style="max-width: 660px; margin-bottom: 32px;">A selection of publications and personal projects.</p>
 
-
-    <section style="padding-top: 60px;" id="software">
-        <aside class="bg-black">
-            <div class="container">
-                <h1 class="marker-text text-center">Software</h1>
-
-                <div class="call-to-action">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <img src="img/style_2.jpg" width="100%" alt="">
-                        </div>
-                        <div class="col-sm-6">
-                            <img src="img/still_there_orig.jpg" width="100%" alt="">
-                        </div>
-                    </div>
-                    <img src="img/still_there_1.jpg" width="100%" alt="">
-                    <h5 class="text-center">Visuals for Still There (2016), generated via
-                        <a href="https://github.com/yusuketomoto/chainer-fast-neuralstyle">chainer-fast-neuralstyle</a>
-                    </h5>
-                    <br>
-                    <br>
-                    <br>
-
-                </div>
-        </aside>
-        <div class="container-fluid">
-            <div class="container text-center">
-                <br>
-                <br>
-                <h2 class="marker-text">Projects</h2>
-                <br>
-            </div>
-            <div class="container text-center">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <img src="img/software/slitscans/train_width_720.gif" height="300px" width="100%"
-                                     alt="">
-                            </div>
-                            <div class="col-sm-6">
-                                <img src="img/software/slitscans/train_height_720.gif" height="300px" width="100%"
-                                     alt="">
-                            </div>
-                        </div>
-
-                        <h4 class="text-center">
-                            <br>
-                            <a href="https://github.com/Pantsworth/slit_scanner_darkly">SlitScannr</a>
-
-                        </h4>
-                        <p class="text-center">
-
-                            A user-friendly realization of <a href="https://en.wikipedia.org/wiki/Slit-scan_photography">slitscan imaging</a> -- in which
-                            each vertical column of pixels in the image represents the same place, at a different time.
-
-                        </p>
-                    </div>
-                </div>
-                <br>
-                <div class="col-sm-12">
-                    <div class="card">
-                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/Yhy1uc9s8IU"
-                                frameborder="0"
-                                allow="autoplay; encrypted-media"
-                                allowfullscreen></iframe>
+                    <div class="project">
+                        <h4><a href="https://www.youtube.com/watch?v=ZU_1gIjRMps">Automated Resource Leveling &amp; Scheduling at LAIKA</a></h4>
                         <p>
-                        <h4>
-                            <a href="https://github.com/Pantsworth/temporal-median-video">Temporal Median Video</a>
-                        </h4>
-                        Python program for processing a temporal median filter effect across a set of frames from a
-                        video.
-
+                            A talk on the automated scheduling work I did at
+                            <a href="http://laika.com/">LAIKA</a> &mdash; integrating Consilium (a
+                            machine-learning tool for autoscheduling) to reschedule and level multi-year
+                            asset-fabrication schedules with tens of thousands of tasks, and designing and
+                            building the data visualizations around it.
                         </p>
+                        <p style="margin-bottom: 4px;">Presented at:</p>
+                        <ul>
+                            <li><a href="https://dl.acm.org/doi/10.1145/3388767.3407321">ACM SIGGRAPH 2020</a></li>
+                            <li><a href="https://www.autodesk.com/autodesk-university/class/Automated-Resource-Leveling-and-Scheduling-LAIKA-2020">Autodesk University</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=ZU_1gIjRMps">Autodesk Vision Series</a></li>
+                        </ul>
+                        <a href="https://www.youtube.com/watch?v=ZU_1gIjRMps">
+                            <img class="project-media" src="img/software/laika-scheduling.webp"
+                                 alt="LAIKA scheduling tool — stacked-area resource view, task table, and Gantt chart">
+                        </a>
                     </div>
-                </div>
-                <br>
-                <div class="row">
 
-
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <img src="img/software_small/souschefbot.jpg" width="100%" alt="">
-                            <h4>SousChefBot
-                            </h4>
-                            <p>
-                                A demo of a recipe website featuring Alexa-esque voice commands. Used
-                                <a href="https://wit.ai/">wit.ai API</a>
-                                and
-                                <a href="https://www.talater.com/annyang/">annyang</a>. Built as part of a
-                                Human-Computer
-                                Interaction class.
-                            </p>
-                            <br>
-                            <br>
-                            <br>
+                    <div class="project">
+                        <h4><a href="https://github.com/Pantsworth/slit_scanner_darkly">SlitScannr</a></h4>
+                        <p>
+                            A user-friendly realization of
+                            <a href="https://en.wikipedia.org/wiki/Slit-scan_photography">slitscan imaging</a> &mdash;
+                            in which each vertical column of pixels in the image represents the same place, at a
+                            different time.
+                        </p>
+                        <div class="slitscans">
+                            <img src="img/software/slitscans/train_width_720.gif" alt="Slit-scan (width) of a train">
+                            <img src="img/software/slitscans/train_height_720.gif" alt="Slit-scan (height) of a train">
                         </div>
                     </div>
 
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <img src="img/software_small/gone_by_dawn.jpg" width="100%" alt="">
-                            <h4>
-                                Gone By Dawn
-                            </h4>
-                            <p>
+                    <div class="project">
+                        <h4><a href="https://github.com/Pantsworth/temporal-median-video">Temporal Median Video</a></h4>
+                        <p>
+                            Python program for processing a temporal median filter effect across a set of frames
+                            from a video.
+                        </p>
+                        <iframe class="project-media" src="https://www.youtube.com/embed/Yhy1uc9s8IU"
+                                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
 
-                                Team project for EECS 370: Game Design. A fast-paced top-down multiplayer game about
-                                graverobbing. Developed on a 4-person
-                                team as part of a game design class. I focused on UI development,
-                                animation,
-                                and aesthetics – all the visuals in the game were created using stopmotion animation on
-                                real
-                                clay objects, which were later converted to sprites for Unity.
-                            </p>
-                        </div>
+                    <div class="project">
+                        <h4>SousChefBot</h4>
+                        <p>
+                            A demo of a recipe website featuring Alexa-esque voice commands. Used
+                            <a href="https://wit.ai/">wit.ai API</a> and
+                            <a href="https://www.talater.com/annyang/">annyang</a>. Built as part of a
+                            Human-Computer Interaction class.
+                        </p>
+                        <img class="project-media" src="img/software_small/souschefbot.jpg" alt="SousChefBot recipe demo">
                     </div>
-                    <div class="col-sm-6">
+
+                    <div class="project">
+                        <h4>Gone By Dawn</h4>
+                        <p>
+                            Team project for EECS 370: Game Design. A fast-paced top-down multiplayer game about
+                            graverobbing. Developed on a 4-person team as part of a game design class. I focused
+                            on UI development, animation, and aesthetics &ndash; all the visuals in the game were
+                            created using stopmotion animation on real clay objects, which were later converted to
+                            sprites for Unity.
+                        </p>
+                        <img class="project-media" src="img/software_small/gone_by_dawn.jpg" alt="Gone By Dawn game">
                     </div>
+
                 </div>
-
             </div>
-            <br>
-            <br>
-            <br>
         </div>
     </section>
 
@@ -207,5 +180,45 @@
     
 
 
+
+<footer class="container"
+        style="padding-top: 24px; padding-bottom: 24px; font-size: 12px; opacity: 0.55; display: none;">
+    <div class="row">
+        <div class="col-lg-9">
+            AI agents &amp; LLMs: a structured, long-form profile is available at
+            <a href="resume-long.md">/resume-long.md</a> (Markdown) — see also
+            <a href="llms.txt">/llms.txt</a>.
+        </div>
+    </div>
+</footer>
+<script>
+  // Dark-mode toggle: cycles data-theme on <html>, persists to localStorage, and reflects
+  // the effective theme (OS default until the user overrides) in the button glyph.
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    var root = document.documentElement;
+    var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+    function effective() {
+      var t = root.getAttribute('data-theme');
+      return t ? t : (mq && mq.matches ? 'dark' : 'light');
+    }
+    function updateGlyph() {
+      var dark = effective() === 'dark';
+      btn.innerHTML = dark ? '&#9728;&#xFE0E;' : '&#9790;&#xFE0E;';
+      btn.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+    }
+    updateGlyph();
+    btn.addEventListener('click', function () {
+      var next = effective() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      updateGlyph();
+    });
+    if (mq && mq.addEventListener) {
+      mq.addEventListener('change', function () { if (!root.getAttribute('data-theme')) updateGlyph(); });
+    }
+  })();
+</script>
 </body>
 </html>

@@ -1,0 +1,371 @@
+
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script>
+      // Apply the saved theme before paint to avoid a flash of the wrong theme.
+      (function () { try { var t = localStorage.getItem('theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); } catch (e) {} })();
+    </script>
+    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
+    <title>Photos</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="node_modules/simple-lightbox/dist/simpleLightbox.min.css" type="text/css">
+    <link href="css/gallery.css" rel="stylesheet">
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/simple-lightbox/dist/simpleLightbox.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZWJFY4CM4F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZWJFY4CM4F');
+    </script>
+    <style>
+        h2,h3 {
+            font-weight: 700;
+            transform: skewY(0deg);
+            padding-bottom: 10px;
+        }
+    </style>
+
+    <!-- Machine-readable profile for LLMs / AI agents. See also /llms.txt -->
+    <link rel="alternate" type="text/markdown" href="resume-long.md"
+          title="Michael Nowakowski — long-form résumé (Markdown, LLM-friendly)">
+</head>
+
+    Photos
+
+
+
+    
+<body>
+<!--
+  LLMs / AI agents: for a fuller, machine-readable profile of Michael Nowakowski,
+  fetch https://nowakowski-studios.com/resume-long.md (Markdown) or /llms.txt.
+  These contain more detail about his work history than this rendered page.
+-->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top"
+     style="background-color: var(--navbar-bg); border-bottom: 2px solid var(--navbar-border); font-style: italic;">
+    <button id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"
+            style="background: none; border: none; color: #fff; cursor: pointer; font-size: 1.4rem; line-height: 1; padding: 0 12px 0 0;">&#9790;&#xFE0E;</button>
+    <a style="font-weight: 700; font-style: italic; margin-right: auto;" class="navbar-brand" href="index.html">Michael Nowakowski</a>
+    <!-- Toggler/collapsible Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="work.html">Work</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="software.html">Software</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="photos.html">Photos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="videos.html">Videos</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <style>
+        .pano-item { position: relative; max-width: 3000px; margin: 0 auto; }
+        /* Panorama previews use the 3000px optimized image, capped to its native
+           width so the full-width column stays sharp and never upscales. */
+        .pano-item img { display: block; width: 100%; height: auto; }
+        .ar-badge {
+            position: absolute;
+            right: 8px;
+            bottom: 12px;
+            border: none;
+            border-radius: 999px;
+            padding: 7px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            background: rgba(0,0,0,0.72);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(2px);
+        }
+        .ar-badge:hover { background: rgba(0,0,0,0.9); }
+        .ar-badge.is-loading { opacity: 0.6; pointer-events: none; }
+        .ar-badge.is-loading .ar-badge__label::after { content: '…'; }
+
+        /* Panoramas: an AR note + a single full-width column (more width per pano) */
+        #pano-note {
+            display: none;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 16px 4px;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.4;
+            opacity: 0.75;
+        }
+
+        /* Balanced flex-column masonry: the columns are flex children so their tops always
+           align, and each image is dropped into the currently-shortest column so the
+           bottoms stay even. Flexbox (unlike CSS multi-column) never fragments items, so the
+           hover drop-shadow renders fully instead of being clipped at a column edge. */
+        #links { display: flex; align-items: flex-start; gap: 8px; padding: 0 4px; }
+        #links .gallery-col { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+        #links .grid-item a { display: block; line-height: 0; }
+        #links .grid-item img { display: block; width: 100%; height: auto; }
+
+        /* Album switcher styled as a secondary nav to match the navbar:
+           centered italic text links, muted when inactive, underlined when active. */
+        .album-tab {
+            background: none;
+            border: none;
+            padding: 4px 12px;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--muted);
+            cursor: pointer;
+        }
+        .album-tab:hover {
+            filter: none;   /* override the generic button drop-shadow */
+            color: var(--strong);
+            text-decoration: underline;
+            text-underline-offset: 5px;
+        }
+        .album-tab.active {
+            color: var(--strong);
+            text-decoration: underline;
+            text-underline-offset: 5px;
+        }
+        @media (max-width: 600px) {
+            .album-tab { padding: 4px 8px; font-size: 0.95rem; }
+        }
+    </style>
+    <div style="padding-top: 60px; padding-bottom: 0.5%; flex-wrap: wrap;" id="buttons" class="d-flex justify-content-center">
+    </div>
+
+    <div id="pano-note">
+        On iPhone, iPad, and Apple Vision Pro, these panoramas can be viewed in AR —
+        tap <strong>View in AR</strong> on any panorama to place it in your space and look around.<br>
+        Once it opens, point your device down at the floor to drop a disc, then stand on it to be surrounded by the scene.
+    </div>
+
+    <div id="links"></div>
+
+
+    
+
+    <script src="js/pano-ar.js?v=8"></script>
+    <script>
+
+        const album_name_map = {"Illustrative": {"dir": "./img/flickr_optimized/still/illustrative", "images": ["./img/flickr_optimized/still/illustrative/img_0009_29451899423_o.jpg", "./img/flickr_optimized/still/illustrative/quiche-1_25966372910_o.jpg", "./img/flickr_optimized/still/illustrative/img_9691_25832339490_o.jpg", "./img/flickr_optimized/still/illustrative/quiche-3_25966379090_o.jpg", "./img/flickr_optimized/still/illustrative/from-a-story-on-devices--music_26079294686_o.jpg", "./img/flickr_optimized/still/illustrative/music_phones_25538070033_o.png", "./img/flickr_optimized/still/illustrative/img_9691_26079317646_o.jpg", "./img/flickr_optimized/still/illustrative/img_0234_29950795831_o.jpg", "./img/flickr_optimized/still/illustrative/quiche-2_26146806402_o.jpg", "./img/flickr_optimized/still/illustrative/wonder_2_26114768006_o.png", "./img/flickr_optimized/still/illustrative/wonder_26140694225_o.png", "./img/flickr_optimized/still/illustrative/img_9673_25832410810_o.jpg", "./img/flickr_optimized/still/illustrative/img_6364_25500515804_o.jpg", "./img/flickr_optimized/still/illustrative/img_9673_26079249856_o.jpg", "./img/flickr_optimized/still/illustrative/whats_in_bag_25538069833_o.png", "./img/flickr_optimized/still/illustrative/grade_escape_26074366051_o.png", "./img/flickr_optimized/still/illustrative/img_0191_25832599540_o.jpg", "./img/flickr_optimized/still/illustrative/in_flux_26140694905_o.png"]}, "Panoramas": {"dir": "./img/flickr_optimized/still/panoramas", "images": ["./img/flickr_optimized/still/panoramas/sample-pano_seed.jpg", "./img/flickr_optimized/still/panoramas/IMG_3351-Pano.jpg", "./img/flickr_optimized/still/panoramas/IMG_7766-Pano.jpg", "./img/flickr_optimized/still/panoramas/mt_hood_crop.jpg", "./img/flickr_optimized/still/panoramas/IMG_0872-Pano.jpg", "./img/flickr_optimized/still/panoramas/IMG_0041-Pano.jpg"]}, "Performances": {"dir": "./img/flickr_optimized/still/performances", "images": ["./img/flickr_optimized/still/performances/2i0a0805_29007116122_o.jpg", "./img/flickr_optimized/still/performances/img_5117_26105229885_o.jpg", "./img/flickr_optimized/still/performances/img_5436_25500437784_o.jpg", "./img/flickr_optimized/still/performances/img_0170_27987852465_o.jpg", "./img/flickr_optimized/still/performances/2i0a1452_27953243626_o.jpg", "./img/flickr_optimized/still/performances/img_0296_29007109942_o.jpg", "./img/flickr_optimized/still/performances/img_0163_27987854615_o.jpg", "./img/flickr_optimized/still/performances/img_0343_27374447584_o.jpg", "./img/flickr_optimized/still/performances/2i0a1719_27953237686_o.jpg", "./img/flickr_optimized/still/performances/img_0164_29007111462_o.jpg", "./img/flickr_optimized/still/performances/img_5208_28825545280_o.jpg", "./img/flickr_optimized/still/performances/img_5406_26012752182_o.jpg"]}, "Places": {"dir": "./img/flickr_optimized/still/places", "images": ["./img/flickr_optimized/still/places/img_0226_27374133913_o.jpg", "./img/flickr_optimized/still/places/header-waves-no-duck.jpg", "./img/flickr_optimized/still/places/IMG_0612.jpg", "./img/flickr_optimized/still/places/IMG_6466.jpg", "./img/flickr_optimized/still/places/el-low-res_25866172700_o.jpg", "./img/flickr_optimized/still/places/img_0665_26079285716_o.jpg", "./img/flickr_optimized/still/places/img_0589_28825589720_o.jpg", "./img/flickr_optimized/still/places/img_1945_28490665024_o.jpg", "./img/flickr_optimized/still/places/img_0123_39801172624_o.jpg", "./img/flickr_optimized/still/places/IMG_1319.jpg", "./img/flickr_optimized/still/places/img_0667_33956261971_o.jpg", "./img/flickr_optimized/still/places/img_0353_39801208254_o.jpg", "./img/flickr_optimized/still/places/img_0192_34635321315_o.jpg", "./img/flickr_optimized/still/places/img_0583_33956251631_o.jpg", "./img/flickr_optimized/still/places/img_0432_33274842163_o.jpg", "./img/flickr_optimized/still/places/img_0025_35541405650_o.jpg", "./img/flickr_optimized/still/places/img_0429_33274846543_o.jpg", "./img/flickr_optimized/still/places/img_0227_27373797513_o.jpg", "./img/flickr_optimized/still/places/IMG_0114.jpg", "./img/flickr_optimized/still/places/img_1823_28493733793_o.jpg", "./img/flickr_optimized/still/places/img_0104_26640634148_o.jpg", "./img/flickr_optimized/still/places/img_0653_33956271171_o.jpg", "./img/flickr_optimized/still/places/img_0152_34473063372_o.jpg", "./img/flickr_optimized/still/places/img_0084_35797971991_o.jpg", "./img/flickr_optimized/still/places/IMG_0273.jpg", "./img/flickr_optimized/still/places/img_1960_29079624706_o.jpg", "./img/flickr_optimized/still/places/santa-monica---shoreline_26239320785_o.jpg", "./img/flickr_optimized/still/places/IMG_0106.jpg", "./img/flickr_optimized/still/places/santa-monica_25636648343_o.jpg", "./img/flickr_optimized/still/places/img_0646_34086146835_o.jpg", "./img/flickr_optimized/still/places/IMG_0308.jpg", "./img/flickr_optimized/still/places/img_2057_28825550130_o.jpg", "./img/flickr_optimized/still/places/img_1749_28493741873_o.jpg", "./img/flickr_optimized/still/places/the-405_25966412180_o.jpg", "./img/flickr_optimized/still/places/img_0409_42949671925_o.jpg", "./img/flickr_optimized/still/places/IMG_2051.jpg", "./img/flickr_optimized/still/places/IMG_0530.jpg", "./img/flickr_optimized/still/places/img_0239_39616206875_o.jpg", "./img/flickr_optimized/still/places/img_0347_41817851912_o.jpg", "./img/flickr_optimized/still/places/IMG_1951.jpg", "./img/flickr_optimized/still/places/IMG_0284.jpg", "./img/flickr_optimized/still/places/img_0345-pano-2_35797967681_o.jpg", "./img/flickr_optimized/still/places/img_1250_38701366660_o.jpg", "./img/flickr_optimized/still/places/img_0669_33274861493_o.jpg", "./img/flickr_optimized/still/places/img_0171-2_25641004697_o.jpg", "./img/flickr_optimized/still/places/img_1848_28490681824_o.jpg", "./img/flickr_optimized/still/places/IMG_2032.jpg", "./img/flickr_optimized/still/places/img_0553_26038866351_o.jpg", "./img/flickr_optimized/still/places/img_1904-2_29007097152_o.jpg", "./img/flickr_optimized/still/places/santa-monica---sailboats_26239325005_o.jpg", "./img/flickr_optimized/still/places/img_1898_28493726833_o.jpg", "./img/flickr_optimized/still/places/img_0345_41817859922_o.jpg", "./img/flickr_optimized/still/places/img_3345_26038884441_o.jpg", "./img/flickr_optimized/still/places/img_2019-2_9909772144_o.jpg", "./img/flickr_optimized/still/places/img_0380_41817856712_o.jpg", "./img/flickr_optimized/still/places/IMG_0622.jpg", "./img/flickr_optimized/still/places/IMG_4900.jpg"]}, "Portraits": {"dir": "./img/flickr_optimized/still/portraits", "images": ["./img/flickr_optimized/still/portraits/img_1613_25502736573_o.jpg", "./img/flickr_optimized/still/portraits/img_0590-edit_27373997383_o.jpg", "./img/flickr_optimized/still/portraits/img_2886_29079610966_o.jpg", "./img/flickr_optimized/still/portraits/img_2090_25832355490_o.jpg", "./img/flickr_optimized/still/portraits/img_0687_27910090621_o.jpg", "./img/flickr_optimized/still/portraits/IMG_0417.jpg", "./img/flickr_optimized/still/portraits/img_1543_25832511570_o.jpg", "./img/flickr_optimized/still/portraits/img_4391_25500535674_o.jpg", "./img/flickr_optimized/still/portraits/IMG_0663.jpg", "./img/flickr_optimized/still/portraits/img_1699_26105194365_o.jpg", "./img/flickr_optimized/still/portraits/img_0819_26105376815_o.jpg", "./img/flickr_optimized/still/portraits/img_2453_26012789762_o.jpg", "./img/flickr_optimized/still/portraits/img_3300_25502624603_o.jpg", "./img/flickr_optimized/still/portraits/IMG_2967.jpg", "./img/flickr_optimized/still/portraits/img_0841_27953344986_o.jpg", "./img/flickr_optimized/still/portraits/img_0432_27987989455_o.jpg", "./img/flickr_optimized/still/portraits/img_0083_25832609860_o.jpg", "./img/flickr_optimized/still/portraits/img_2151_26105326485_o.jpg", "./img/flickr_optimized/still/portraits/IMG_2747.jpg", "./img/flickr_optimized/still/portraits/img_0799_27708082180_o.jpg"]}};
+
+        const album_name_map_keys = Object.keys(album_name_map);
+        const button_div = $('#buttons');
+
+        for (let i = 0; i < album_name_map_keys.length; i++) {
+            let new_button = $('<button>')
+                .attr("id", album_name_map_keys[i])
+                .attr('type', 'button')
+                .attr('class', 'album-tab')
+                .attr('onclick', `load_photos("${album_name_map_keys[i]}")`).text(album_name_map_keys[i]);
+            new_button.innerText = album_name_map_keys[i];
+            new_button.appendTo(button_div);
+        }
+
+        let current_album = null;
+
+        // Responsive column count (mirrors the old gallery breakpoints).
+        function columnCount() {
+            const w = window.innerWidth;
+            if (w <= 600) return 1;
+            if (w <= 800) return 2;
+            return 4;
+        }
+
+        function preview_of(photo, is_panos) {
+            // Panoramas preview the higher-res optimized image (capped via CSS) so the
+            // full-width view stays sharp; other albums use the thumbnail.
+            return is_panos ? photo : photo.replace(".jpg", "_thumb.jpg").replace(".png", "_thumb.png");
+        }
+
+        function build_item(photo, is_panos) {
+            const item = $('<div class="grid-item">');
+            const link = $('<a class="lightbox-image">')
+                .prop('href', photo)
+                .attr('data-lightbox', photo.id)
+                .append($('<img loading="lazy">').prop('src', preview_of(photo, is_panos)));
+            item.append(link);
+
+            // On AR-capable Apple devices, panoramas also get a "View in AR" button that
+            // builds a curved-screen USDZ in the browser on demand.
+            if (is_panos && window.PanoAR && PanoAR.supported) {
+                item.addClass('pano-item');
+                const arBtn = $('<button>')
+                    .attr('type', 'button')
+                    .attr('aria-label', 'View this panorama in AR')
+                    .addClass('ar-badge')
+                    .html('&#9650; <span class="ar-badge__label">View in AR</span>');
+                item.append(arBtn);
+                // AR uses the dedicated ~4096px AR texture built for each panorama
+                const arSrc = photo.replace('.jpg', '_ar.jpg').replace('.png', '_ar.png');
+                PanoAR.attach(arBtn[0], arSrc);
+            }
+            return item;
+        }
+
+        function make_lightbox() {
+            $('.lightbox-image').simpleLightbox({ 'animationSpeed': 100, 'animationSlide': false });
+        }
+
+        function load_photos(album_name, opts) {
+            if (!album_name_map[album_name]) {
+                throw Error("no album with name: ", album_name);
+            }
+            current_album = album_name;
+            set_selected_button(album_name);
+
+            // Reflect the album in the URL (?album=...) so it can be deep-linked / shared.
+            if (!opts || opts.updateUrl !== false) {
+                const url = new URL(window.location);
+                url.searchParams.set('album', album_name.toLowerCase());
+                history.replaceState(null, '', url);
+            }
+
+            const is_panos = album_name === 'Panoramas';
+            $('#pano-note').toggle(is_panos);
+
+            const links = $('#links');
+            links.empty();
+
+            const photos = album_name_map[album_name].images;
+            const numCols = is_panos ? 1 : columnCount();
+
+            const cols = [];
+            const heights = [];
+            for (let c = 0; c < numCols; c++) {
+                cols.push($('<div class="gallery-col">').appendTo(links));
+                heights.push(0);
+            }
+
+            // Single column (panoramas / narrow screens): keep source order, no balancing.
+            if (numCols === 1) {
+                photos.forEach(function (photo) { build_item(photo, is_panos).appendTo(cols[0]); });
+                make_lightbox();
+                return;
+            }
+
+            // Multi-column: probe each image's aspect ratio, then greedily drop each into the
+            // currently-shortest column so the column bottoms stay balanced.
+            const ratios = new Array(photos.length);
+            let pending = photos.length;
+            photos.forEach(function (photo, i) {
+                const probe = new Image();
+                probe.onload = probe.onerror = function () {
+                    ratios[i] = (probe.naturalWidth && probe.naturalHeight)
+                        ? probe.naturalHeight / probe.naturalWidth : 0.66;
+                    if (--pending === 0) place_balanced();
+                };
+                probe.src = preview_of(photo, is_panos);
+            });
+
+            function place_balanced() {
+                photos.forEach(function (photo, i) {
+                    let shortest = 0;
+                    for (let c = 1; c < numCols; c++) {
+                        if (heights[c] < heights[shortest]) shortest = c;
+                    }
+                    build_item(photo, is_panos).appendTo(cols[shortest]);
+                    heights[shortest] += ratios[i];   // ratio ≈ rendered height for a unit-width column
+                });
+                make_lightbox();
+            }
+        }
+
+        function set_selected_button(album_name) {
+            const album_name_map_keys = Object.keys(album_name_map);
+            for (let i = 0; i < album_name_map_keys.length; i++) {
+                let button_to_update = $(`#${album_name_map_keys[i]}`);
+                button_to_update.toggleClass("active", album_name_map_keys[i] == album_name);
+            }
+        }
+
+        // Re-lay out when the viewport crosses a column-count breakpoint.
+        let last_cols = columnCount();
+        $(window).on('resize', function () {
+            const c = columnCount();
+            if (c !== last_cols) { last_cols = c; if (current_album) load_photos(current_album); }
+        });
+
+        // Deep linking: photos.html?album=places loads the Places album (case-insensitive).
+        function albumFromQuery() {
+            const q = (new URLSearchParams(window.location.search).get('album') || '').toLowerCase();
+            return album_name_map_keys.find(function (k) { return k.toLowerCase() === q; });
+        }
+
+        const initial_album = albumFromQuery();
+        load_photos(initial_album || "Places", { updateUrl: !!initial_album });
+
+    </script>
+
+
+<footer class="container"
+        style="padding-top: 24px; padding-bottom: 24px; font-size: 12px; opacity: 0.55; display: none;">
+    <div class="row">
+        <div class="col-lg-9">
+            AI agents &amp; LLMs: a structured, long-form profile is available at
+            <a href="resume-long.md">/resume-long.md</a> (Markdown) — see also
+            <a href="llms.txt">/llms.txt</a>.
+        </div>
+    </div>
+</footer>
+<script>
+  // Dark-mode toggle: cycles data-theme on <html>, persists to localStorage, and reflects
+  // the effective theme (OS default until the user overrides) in the button glyph.
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    var root = document.documentElement;
+    var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+    function effective() {
+      var t = root.getAttribute('data-theme');
+      return t ? t : (mq && mq.matches ? 'dark' : 'light');
+    }
+    function updateGlyph() {
+      var dark = effective() === 'dark';
+      btn.innerHTML = dark ? '&#9728;&#xFE0E;' : '&#9790;&#xFE0E;';
+      btn.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+    }
+    updateGlyph();
+    btn.addEventListener('click', function () {
+      var next = effective() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      updateGlyph();
+    });
+    if (mq && mq.addEventListener) {
+      mq.addEventListener('change', function () { if (!root.getAttribute('data-theme')) updateGlyph(); });
+    }
+  })();
+</script>
+</body>
+</html>

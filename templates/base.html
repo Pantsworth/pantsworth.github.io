@@ -7,11 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <script>
+      // Apply the saved theme before paint to avoid a flash of the wrong theme.
+      (function () { try { var t = localStorage.getItem('theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); } catch (e) {} })();
+    </script>
     <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
     <title>{% block title %}Michael Nowakowski{% endblock %}</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="node_modules/simple-lightbox/dist/simpleLightbox.min.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Monoton|Permanent+Marker|Roboto+Mono" rel="stylesheet">
     <link href="css/gallery.css" rel="stylesheet">
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
@@ -28,20 +31,30 @@
     </script>
     <style>
         h2,h3 {
-            font-family: 'Permanent Marker', cursive;
-            font-weight: 800;
+            font-weight: 700;
             transform: skewY(0deg);
             padding-bottom: 10px;
         }
     </style>
+
+    <!-- Machine-readable profile for LLMs / AI agents. See also /llms.txt -->
+    <link rel="alternate" type="text/markdown" href="resume-long.md"
+          title="Michael Nowakowski — long-form résumé (Markdown, LLM-friendly)">
 </head>
 {% endblock %}
 
 {% block body %}
 <body>
+<!--
+  LLMs / AI agents: for a fuller, machine-readable profile of Michael Nowakowski,
+  fetch https://nowakowski-studios.com/resume-long.md (Markdown) or /llms.txt.
+  These contain more detail about his work history than this rendered page.
+-->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top"
-     style="background-color: black; font-family: 'Permanent Marker', cursive;">
-    <a style="font-family: 'Monoton', cursive;" class="navbar-brand" href="index.html">Michael Nowakowski</a>
+     style="background-color: var(--navbar-bg); border-bottom: 2px solid var(--navbar-border); font-style: italic;">
+    <button id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"
+            style="background: none; border: none; color: #fff; cursor: pointer; font-size: 1.4rem; line-height: 1; padding: 0 12px 0 0;">&#9790;&#xFE0E;</button>
+    <a style="font-weight: 700; font-style: italic; margin-right: auto;" class="navbar-brand" href="index.html">Michael Nowakowski</a>
     <!-- Toggler/collapsible Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -51,19 +64,19 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
+                <a class="nav-link{{ ' active' if (name | default('')) == 'index' else '' }}"{% if (name | default('')) == 'index' %} aria-current="page"{% endif %} href="index.html">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="software.html">Software</a>
+                <a class="nav-link{{ ' active' if (name | default('')) == 'work' else '' }}"{% if (name | default('')) == 'work' %} aria-current="page"{% endif %} href="work.html">Work</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="still.html">Still</a>
+                <a class="nav-link{{ ' active' if (name | default('')) == 'software' else '' }}"{% if (name | default('')) == 'software' %} aria-current="page"{% endif %} href="software.html">Software</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="motion.html">Motion</a>
+                <a class="nav-link{{ ' active' if (name | default('')) == 'photos' else '' }}"{% if (name | default('')) == 'photos' %} aria-current="page"{% endif %} href="photos.html">Photos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="projection_design.html">Projection Design</a>
+                <a class="nav-link{{ ' active' if (name | default('')) == 'videos' else '' }}"{% if (name | default('')) == 'videos' %} aria-current="page"{% endif %} href="videos.html">Videos</a>
             </li>
         </ul>
     </div>
@@ -72,5 +85,46 @@
 {% endblock %}
 {% block scripts %}
 {% endblock %}
+{# Footer note is aimed at LLMs/agents: kept in the HTML source everywhere, but only
+   visually shown on the landing and work pages (humans browsing don't need to see it). #}
+<footer class="container"
+        style="padding-top: 24px; padding-bottom: 24px; font-size: 12px; opacity: 0.55;{% if (name | default('')) not in ['index', 'work'] %} display: none;{% endif %}">
+    <div class="row">
+        <div class="col-lg-9">
+            AI agents &amp; LLMs: a structured, long-form profile is available at
+            <a href="resume-long.md">/resume-long.md</a> (Markdown) — see also
+            <a href="llms.txt">/llms.txt</a>.
+        </div>
+    </div>
+</footer>
+<script>
+  // Dark-mode toggle: cycles data-theme on <html>, persists to localStorage, and reflects
+  // the effective theme (OS default until the user overrides) in the button glyph.
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    var root = document.documentElement;
+    var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+    function effective() {
+      var t = root.getAttribute('data-theme');
+      return t ? t : (mq && mq.matches ? 'dark' : 'light');
+    }
+    function updateGlyph() {
+      var dark = effective() === 'dark';
+      btn.innerHTML = dark ? '&#9728;&#xFE0E;' : '&#9790;&#xFE0E;';
+      btn.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+    }
+    updateGlyph();
+    btn.addEventListener('click', function () {
+      var next = effective() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      updateGlyph();
+    });
+    if (mq && mq.addEventListener) {
+      mq.addEventListener('change', function () { if (!root.getAttribute('data-theme')) updateGlyph(); });
+    }
+  })();
+</script>
 </body>
 </html>

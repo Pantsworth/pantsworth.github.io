@@ -1,58 +1,80 @@
 {% extends "base.html" %}
 {% block head %}
     {{ super() }}
-    {% block title %}Home{% endblock %}
+    {% block title %}Michael Nowakowski{% endblock %}
 {% endblock %}
 {% block body %}
     {{ super() }}
-    <div style="padding-top: 3%; padding-bottom: 0.5%" id="buttons" class="d-flex justify-content-center">
-    </div>
+    <section id="home" style="padding-top: 96px; padding-bottom: 64px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
 
-    <div class="row" id="links">
-        <div class="column" id="column0">
+                    <!-- Header -->
+                    <a href="img/me2.jpg" class="headshot-lightbox" style="display: inline-block; cursor: zoom-in;">
+                        <img src="img/me2.jpg" alt="Michael Nowakowski"
+                             style="width: 300px; height: auto; border-radius: 16px; display: block;
+                                    filter: drop-shadow(1px 1px 4px rgba(0,0,0,0.35)); margin-bottom: 20px;">
+                    </a>
+                    <h1 class="marker-text" style="font-size: 2.8rem; margin-bottom: 20px;">Hi, I'm Michael</h1>
+
+                    <!-- Bio -->
+                    <p style="font-size: 1.08rem; line-height: 1.4;">
+                        I'm a Senior Software Engineer in Apple's Vision Products Group in Seattle WA,
+                        where I build the tools, pipelines, and developer platforms that help artists and
+                        engineers make 3D content for AR/VR products like the <a href="https://www.apple.com/apple-vision-pro/">Apple Vision Pro</a>. 
+                    </p>
+                    <p style="font-size: 1.08rem; line-height: 1.4;">
+                        Before Apple, I was a Lead Technical Director at <a href="https://www.laika.com">LAIKA</a>
+                        in Portland, Oregon, an Oscar-nominated, Golden Globe-winning stopmotion animation
+                        company. I worked with folks all over the studio to maintain and develop workflows
+                        related to scheduling, fabrication, and work tracking.
+                    </p>
+                    <p style="font-size: 1.08rem; line-height: 1.4;">
+                        This site includes a <a href="work.html">summary of my professional work</a> and a variety of personal projects dating back to my college film days, including:
+                    </p>
+                    <p style="font-size: 1.05rem; line-height: 1.9;">
+                        <a href="software.html"><b>Software</b></a> &mdash; creative coding, imaging experiments, and personal tools<br>
+                        <a href="photos.html"><b>Photos</b></a> &mdash; photography: places, portraits, illustrative, and performance<br>
+                        <a href="videos.html"><b>Videos</b></a> &mdash; film and video work
+                    </p>
+
+                    <!-- Links -->
+                    <h3 style="margin-top: 28px;">Links</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7;">
+                        <a href="mailto:michael.j.nowakowski@gmail.com">Email</a><br>
+                        <a href="https://www.linkedin.com/in/michael-j-nowakowski/">LinkedIn</a><br>
+                        <a href="https://github.com/Pantsworth">GitHub</a><br>
+                        <a href="https://www.instagram.com/michael__nowakowski/">Instagram</a>
+                    </p>
+
+                    <!-- Interests -->
+                    <h3>Interests</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7;">
+                        <b>Code</b> &mdash; especially imaging, creative AI, and machine learning<br>
+                        <b>Photography</b> &mdash; photojournalism, illustrative, portrait, and experimental<br>
+                        <b>Food</b> &mdash; homebrewing, bread, pizza, pasta, etc.<br>
+                        <b>The Outdoors</b> &mdash; hiking, kayaking, camping, foraging, climbing<br>
+                        <b>Filmmaking</b> &mdash; directing and cinematography
+                    </p>
+
+                    <!-- Education -->
+                    <h3 style="margin-top: 28px;">Education</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.6;">
+                        <a href="http://www.northwestern.edu/">Northwestern University</a> &mdash; B.A. in
+                        Computer Science &amp; Film (double major).
+                    </p>
+
+                </div>
+            </div>
         </div>
-        <div class="column" id="column1">
-        </div>
-        <div class="column" id="column2">
-        </div>
-        <div class="column" id="column3">
-        </div>
-    </div>
+    </section>
 {% endblock %}
 
 {% block scripts %}
     {{ super() }}
     <script>
-        const images = {{ images | tojson }};
-
-        // column selectors
-        const column_map = {
-            0: $('#column0'),
-            1: $('#column1'),
-            2: $('#column2'),
-            3: $('#column3')
-        };
-
-        for (column of Object.keys(column_map)) {
-            column_map[column].empty();
-        }
-
-        // put each of the images into a column
-        $.each(images, function (index, photo) {
-            let index_mod = index % 4;
-            let new_image = $("<div>").attr('class', 'grid-item').append(
-                $('<a/>').append($('<img width="100%;" loading="lazy">').prop('src', photo.replace(".jpg", "_thumb.jpg").replace(".png", "_thumb.png")))
-                        .prop('href', photo)
-                    .attr('class', 'lightbox-image')
-                    .attr('data-lightbox', photo.id));
-            new_image.appendTo(column_map[index_mod]);
-        });
-
-
-        const lightbox = $('.lightbox-image').simpleLightbox(
-            {'animationSpeed': 100,
-                'animationSlide': false }
-        );
-
+        // Click the profile photo to open a full-size lightbox view.
+        $('.headshot-lightbox').simpleLightbox({ 'animationSpeed': 100, 'animationSlide': false });
     </script>
 {% endblock %}

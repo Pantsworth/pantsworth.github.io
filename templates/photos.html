@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    {% block title %}{{ name.capitalize()  }}{% endblock %}
+{% endblock %}
+{% block body %}
+    {{ super() }}
+    <style>
+        .pano-item { position: relative; max-width: 3000px; margin: 0 auto; }
+        /* Panorama previews use the 3000px optimized image, capped to its native
+           width so the full-width column stays sharp and never upscales. */
+        .pano-item img { display: block; width: 100%; height: auto; }
+        .ar-badge {
+            position: absolute;
+            right: 8px;
+            bottom: 12px;
+            border: none;
+            border-radius: 999px;
+            padding: 7px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            background: rgba(0,0,0,0.72);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(2px);
+        }
+        .ar-badge:hover { background: rgba(0,0,0,0.9); }
+        .ar-badge.is-loading { opacity: 0.6; pointer-events: none; }
+        .ar-badge.is-loading .ar-badge__label::after { content: '…'; }
+
+        /* Panoramas: an AR note + a single full-width column (more width per pano) */
+        #pano-note {
+            display: none;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 16px 4px;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.4;
+            opacity: 0.75;
+        }
+
+        /* Balanced flex-column masonry: the columns are flex children so their tops always
+           align, and each image is dropped into the currently-shortest column so the
+           bottoms stay even. Flexbox (unlike CSS multi-column) never fragments items, so the
+           hover drop-shadow renders fully instead of being clipped at a column edge. */
+        #links { display: flex; align-items: flex-start; gap: 8px; padding: 0 4px; }
+        #links .gallery-col { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+        #links .grid-item a { display: block; line-height: 0; }
+        #links .grid-item img { display: block; width: 100%; height: auto; }
+
+        /* Album switcher styled as a secondary nav to match the navbar:
+           centered italic text links, muted when inactive, underlined when active. */
+        .album-tab {
+            background: none;
+            border: none;
+            padding: 4px 12px;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--muted);
+            cursor: pointer;
+        }
+        .album-tab:hover {
+            filter: none;   /* override the generic button drop-shadow */
+            color: var(--strong);
+            text-decoration: underline;
+            text-underline-offset: 5px;
+        }
+        .album-tab.active {
+            color: var(--strong);
+            text-decoration: underline;
+            text-underline-offset: 5px;
+        }
+        @media (max-width: 600px) {
+            .album-tab { padding: 4px 8px; font-size: 0.95rem; }
+        }
+    </style>
+    <div style="padding-top: 60px; padding-bottom: 0.5%; flex-wrap: wrap;" id="buttons" class="d-flex justify-content-center">
+    </div>
+
+    <div id="pano-note">
+        On iPhone, iPad, and Apple Vision Pro, these panoramas can be viewed in AR —
+        tap <strong>View in AR</strong> on any panorama to place it in your space and look around.<br>
+        Once it opens, point your device down at the floor to drop a disc, then stand on it to be surrounded by the scene.
+    </div>
+
+    <div id="links"></div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="js/pano-ar.js?v=8"></script>
+    <script>
+
+        const album_name_map = {{ album_config | tojson }};
+
+        const album_name_map_keys = Object.keys(album_name_map);
+        const button_div = $('#buttons');
+
+        for (let i = 0; i < album_name_map_keys.length; i++) {
+            let new_button = $('<button>')
+                .attr("id", album_name_map_keys[i])
+                .attr('type', 'button')
+                .attr('class', 'album-tab')
+                .attr('onclick', `load_photos("${album_name_map_keys[i]}")`).text(album_name_map_keys[i]);
+            new_button.innerText = album_name_map_keys[i];
+            new_button.appendTo(button_div);
+        }
+
+        let current_album = null;
+
+        // Responsive column count (mirrors the old gallery breakpoints).
+        function columnCount() {
+            const w = window.innerWidth;
+            if (w <= 600) return 1;
+            if (w <= 800) return 2;
+            return 4;
+        }
+
+        function preview_of(photo, is_panos) {
+            // Panoramas preview the higher-res optimized image (capped via CSS) so the
+            // full-width view stays sharp; other albums use the thumbnail.
+            return is_panos ? photo : photo.replace(".jpg", "_thumb.jpg").replace(".png", "_thumb.png");
+        }
+
+        function build_item(photo, is_panos) {
+            const item = $('<div class="grid-item">');
+            const link = $('<a class="lightbox-image">')
+                .prop('href', photo)
+                .attr('data-lightbox', photo.id)
+                .append($('<img loading="lazy">').prop('src', preview_of(photo, is_panos)));
+            item.append(link);
+
+            // On AR-capable Apple devices, panoramas also get a "View in AR" button that
+            // builds a curved-screen USDZ in the browser on demand.
+            if (is_panos && window.PanoAR && PanoAR.supported) {
+                item.addClass('pano-item');
+                const arBtn = $('<button>')
+                    .attr('type', 'button')
+                    .attr('aria-label', 'View this panorama in AR')
+                    .addClass('ar-badge')
+                    .html('&#9650; <span class="ar-badge__label">View in AR</span>');
+                item.append(arBtn);
+                // AR uses the dedicated ~4096px AR texture built for each panorama
+                const arSrc = photo.replace('.jpg', '_ar.jpg').replace('.png', '_ar.png');
+                PanoAR.attach(arBtn[0], arSrc);
+            }
+            return item;
+        }
+
+        function make_lightbox() {
+            $('.lightbox-image').simpleLightbox({ 'animationSpeed': 100, 'animationSlide': false });
+        }
+
+        function load_photos(album_name, opts) {
+            if (!album_name_map[album_name]) {
+                throw Error("no album with name: ", album_name);
+            }
+            current_album = album_name;
+            set_selected_button(album_name);
+
+            // Reflect the album in the URL (?album=...) so it can be deep-linked / shared.
+            if (!opts || opts.updateUrl !== false) {
+                const url = new URL(window.location);
+                url.searchParams.set('album', album_name.toLowerCase());
+                history.replaceState(null, '', url);
+            }
+
+            const is_panos = album_name === 'Panoramas';
+            $('#pano-note').toggle(is_panos);
+
+            const links = $('#links');
+            links.empty();
+
+            const photos = album_name_map[album_name].images;
+            const numCols = is_panos ? 1 : columnCount();
+
+            const cols = [];
+            const heights = [];
+            for (let c = 0; c < numCols; c++) {
+                cols.push($('<div class="gallery-col">').appendTo(links));
+                heights.push(0);
+            }
+
+            // Single column (panoramas / narrow screens): keep source order, no balancing.
+            if (numCols === 1) {
+                photos.forEach(function (photo) { build_item(photo, is_panos).appendTo(cols[0]); });
+                make_lightbox();
+                return;
+            }
+
+            // Multi-column: probe each image's aspect ratio, then greedily drop each into the
+            // currently-shortest column so the column bottoms stay balanced.
+            const ratios = new Array(photos.length);
+            let pending = photos.length;
+            photos.forEach(function (photo, i) {
+                const probe = new Image();
+                probe.onload = probe.onerror = function () {
+                    ratios[i] = (probe.naturalWidth && probe.naturalHeight)
+                        ? probe.naturalHeight / probe.naturalWidth : 0.66;
+                    if (--pending === 0) place_balanced();
+                };
+                probe.src = preview_of(photo, is_panos);
+            });
+
+            function place_balanced() {
+                photos.forEach(function (photo, i) {
+                    let shortest = 0;
+                    for (let c = 1; c < numCols; c++) {
+                        if (heights[c] < heights[shortest]) shortest = c;
+                    }
+                    build_item(photo, is_panos).appendTo(cols[shortest]);
+                    heights[shortest] += ratios[i];   // ratio ≈ rendered height for a unit-width column
+                });
+                make_lightbox();
+            }
+        }
+
+        function set_selected_button(album_name) {
+            const album_name_map_keys = Object.keys(album_name_map);
+            for (let i = 0; i < album_name_map_keys.length; i++) {
+                let button_to_update = $(`#${album_name_map_keys[i]}`);
+                button_to_update.toggleClass("active", album_name_map_keys[i] == album_name);
+            }
+        }
+
+        // Re-lay out when the viewport crosses a column-count breakpoint.
+        let last_cols = columnCount();
+        $(window).on('resize', function () {
+            const c = columnCount();
+            if (c !== last_cols) { last_cols = c; if (current_album) load_photos(current_album); }
+        });
+
+        // Deep linking: photos.html?album=places loads the Places album (case-insensitive).
+        function albumFromQuery() {
+            const q = (new URLSearchParams(window.location.search).get('album') || '').toLowerCase();
+            return album_name_map_keys.find(function (k) { return k.toLowerCase() === q; });
+        }
+
+        const initial_album = albumFromQuery();
+        load_photos(initial_album || "Places", { updateUrl: !!initial_album });
+
+    </script>
+{% endblock %}

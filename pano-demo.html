@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Pano web-viewer demo</title>
+<!-- Pannellum: a small (~50KB) purpose-built panorama viewer, loaded from CDN for this throwaway demo -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+<script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+<style>
+  body { margin: 0; font-family: -apple-system, system-ui, sans-serif; background:#111; color:#eee; }
+  header { padding: 10px 14px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  select, button { font-size:16px; padding:6px 10px; border-radius:8px; border:1px solid #444; background:#222; color:#eee; }
+  #pano { width:100vw; height:78vh; background:#000; }
+  p.note { margin:8px 14px; font-size:13px; opacity:.7; line-height:1.4; }
+</style>
+</head>
+<body>
+<header>
+  <label>Panorama:
+    <select id="pick">
+      <option value="img/flickr_optimized/still/places/img_0345-pano-2_35797967681_o.jpg">Stitched pano (2.97:1)</option>
+      <option value="img/flickr_optimized/still/places/el-low-res_25866172700_o.jpg">Wide slit-scan (6.11:1)</option>
+    </select>
+  </label>
+  <button id="gyro">Enable gyroscope (phone)</button>
+</header>
+<div id="pano"></div>
+<p class="note">
+  Desktop: click-drag to look around, scroll to zoom. Phone: drag with a finger, or tap
+  “Enable gyroscope”, grant motion access, then physically turn to look around (magic-window).
+  This is the <em>web-viewer</em> experience — note that on iPhone/iPad it stays on-screen; it does
+  not place the image into your real room. That part needs a USDZ (AR Quick Look).
+</p>
+<script>
+  let viewer = null;
+
+  function loadPano(src) {
+    // Partial panoramas: derive horizontal/vertical field of view from the image aspect ratio
+    const img = new Image();
+    img.onload = function () {
+      const ar = img.naturalWidth / img.naturalHeight;
+      let vaov = 70;                 // vertical field of view (deg)
+      let haov = ar * vaov;          // horizontal follows aspect ratio
+      if (haov > 300) { haov = 300; vaov = haov / ar; } // clamp very wide sweeps
+      if (viewer) viewer.destroy();
+      viewer = pannellum.viewer('pano', {
+        type: 'equirectangular',
+        panorama: src,
+        haov: haov,
+        vaov: vaov,
+        minHfov: 20,
+        hfov: Math.min(100, haov),
+        autoLoad: true,
+        showControls: true,
+        friction: 0.2
+      });
+    };
+    img.src = src;
+  }
+
+  document.getElementById('pick').addEventListener('change', e => loadPano(e.target.value));
+
+  // iOS 13+ requires an explicit permission gesture for device orientation
+  document.getElementById('gyro').addEventListener('click', async () => {
+    try {
+      if (typeof DeviceOrientationEvent !== 'undefined' &&
+          typeof DeviceOrientationEvent.requestPermission === 'function') {
+        const res = await DeviceOrientationEvent.requestPermission();
+        if (res !== 'granted') { alert('Motion access denied.'); return; }
+      }
+      if (viewer && viewer.startOrientation) viewer.startOrientation();
+    } catch (err) { alert('Gyroscope not available: ' + err); }
+  });
+
+  loadPano(document.getElementById('pick').value);
+</script>
+</body>
+</html>

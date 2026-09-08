@@ -4,7 +4,12 @@ import os
 import shutil
 from PIL import Image
 
+# Panorama sources can be very large (100MP+); these are our own trusted inputs,
+# so lift Pillow's decompression-bomb guard rather than have it refuse to open them.
+Image.MAX_IMAGE_PIXELS = None
+
 thumb_suffix = "_thumb"
+ar_suffix = "_ar"
 
 def main():
     # handle image compression
@@ -36,6 +41,19 @@ def main():
                         continue
 
                     input_image = Image.open(input_file_path)
+
+                    # Panoramas also get a larger, higher-quality AR texture (used by the
+                    # in-browser USDZ builder). Downscale to 4096 first (thumbnail() uses the
+                    # JPEG draft decoder, so even 200MP originals stay low-memory), save the
+                    # AR copy, then keep shrinking the same image for the gallery versions.
+                    if "/panoramas/" in input_file_path.replace(os.sep, "/"):
+                        input_image.thumbnail((4096, 4096))
+                        ar_output = output_file_path.replace(
+                            os.path.basename(output_file_path).rsplit(".")[0],
+                            os.path.basename(output_file_path).rsplit(".")[0] + ar_suffix
+                        )
+                        input_image.convert("RGB").save(ar_output, optimize=True, quality=85)
+
                     input_image.thumbnail((3000,3000))
                     input_image.save(output_file_path, optimize=True, quality=75)
                     input_image.thumbnail((800,800))
@@ -62,6 +80,7 @@ def main():
         with open(template_file.name, 'w') as result_file:
             album_config = {
                 'Places': {"dir": "./img/flickr_optimized/still/places", "images": []},
+                'Panoramas': {"dir": "./img/flickr_optimized/still/panoramas", "images": []},
                 'Illustrative': {"dir": "./img/flickr_optimized/still/illustrative", "images": []},
                 'Portraits':{"dir": "./img/flickr_optimized/still/portraits", "images": []},
                 # 'Experiments':{"dir": "./img/flickr_optimized/still/experiments", "images": []},
@@ -81,7 +100,7 @@ def main():
                 config['images'] = get_image_paths(config["dir"])
 
 
-            if template_file.name == 'still.html':
+            if template_file.name == 'photos.html':
                 result_file.write(
                     jinja_template.render(
                         name=template_file.name.replace(".html", ""),
@@ -109,7 +128,7 @@ def main():
 
 
 def get_image_paths(dir_path):
-    return [x.path for x in os.scandir(dir_path) if (thumb_suffix not in x.path) and not os.path.basename(x.path).startswith(".")]
+    return [x.path for x in os.scandir(dir_path) if (thumb_suffix not in x.path) and (ar_suffix not in x.path) and not os.path.basename(x.path).startswith(".")]
 
 if __name__ == '__main__':
     main()

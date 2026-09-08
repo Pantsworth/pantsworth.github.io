@@ -2,135 +2,95 @@
 {% block head %}
     {{ super() }}
     {% block title %}{{ name.capitalize()  }}{% endblock %}
+    <style>
+        #software .project { margin-bottom: 44px; }
+        #software .project h4 { margin-bottom: 6px; }
+        #software .project p { max-width: 660px; margin-bottom: 12px; }
+        #software .project-media { display: block; width: 100%; max-width: 560px; height: auto; }
+        #software .slitscans { display: flex; gap: 10px; max-width: 560px; }
+        #software .slitscans img { width: 50%; height: auto; }
+        #software iframe.project-media { aspect-ratio: 16 / 9; border: 0; }
+    </style>
 {% endblock %}
 {% block body %}
     {{ super() }}
+    <section style="padding-top: 96px;" id="software">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h1 class="marker-text" style="font-size: 2.2rem; margin-bottom: 8px;">Software</h1>
+                    <p style="max-width: 660px; margin-bottom: 32px;">A selection of publications and personal projects.</p>
 
-
-    <section style="padding-top: 60px;" id="software">
-        <aside class="bg-black">
-            <div class="container">
-                <h1 class="marker-text text-center">Software</h1>
-
-                <div class="call-to-action">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <img src="img/style_2.jpg" width="100%" alt="">
-                        </div>
-                        <div class="col-sm-6">
-                            <img src="img/still_there_orig.jpg" width="100%" alt="">
-                        </div>
-                    </div>
-                    <img src="img/still_there_1.jpg" width="100%" alt="">
-                    <h5 class="text-center">Visuals for Still There (2016), generated via
-                        <a href="https://github.com/yusuketomoto/chainer-fast-neuralstyle">chainer-fast-neuralstyle</a>
-                    </h5>
-                    <br>
-                    <br>
-                    <br>
-
-                </div>
-        </aside>
-        <div class="container-fluid">
-            <div class="container text-center">
-                <br>
-                <br>
-                <h2 class="marker-text">Projects</h2>
-                <br>
-            </div>
-            <div class="container text-center">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <img src="img/software/slitscans/train_width_720.gif" height="300px" width="100%"
-                                     alt="">
-                            </div>
-                            <div class="col-sm-6">
-                                <img src="img/software/slitscans/train_height_720.gif" height="300px" width="100%"
-                                     alt="">
-                            </div>
-                        </div>
-
-                        <h4 class="text-center">
-                            <br>
-                            <a href="https://github.com/Pantsworth/slit_scanner_darkly">SlitScannr</a>
-
-                        </h4>
-                        <p class="text-center">
-
-                            A user-friendly realization of <a href="https://en.wikipedia.org/wiki/Slit-scan_photography">slitscan imaging</a> -- in which
-                            each vertical column of pixels in the image represents the same place, at a different time.
-
-                        </p>
-                    </div>
-                </div>
-                <br>
-                <div class="col-sm-12">
-                    <div class="card">
-                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/Yhy1uc9s8IU"
-                                frameborder="0"
-                                allow="autoplay; encrypted-media"
-                                allowfullscreen></iframe>
+                    <div class="project">
+                        <h4><a href="https://www.youtube.com/watch?v=ZU_1gIjRMps">Automated Resource Leveling &amp; Scheduling at LAIKA</a></h4>
                         <p>
-                        <h4>
-                            <a href="https://github.com/Pantsworth/temporal-median-video">Temporal Median Video</a>
-                        </h4>
-                        Python program for processing a temporal median filter effect across a set of frames from a
-                        video.
-
+                            A talk on the automated scheduling work I did at
+                            <a href="http://laika.com/">LAIKA</a> &mdash; integrating Consilium (a
+                            machine-learning tool for autoscheduling) to reschedule and level multi-year
+                            asset-fabrication schedules with tens of thousands of tasks, and designing and
+                            building the data visualizations around it.
                         </p>
+                        <p style="margin-bottom: 4px;">Presented at:</p>
+                        <ul>
+                            <li><a href="https://dl.acm.org/doi/10.1145/3388767.3407321">ACM SIGGRAPH 2020</a></li>
+                            <li><a href="https://www.autodesk.com/autodesk-university/class/Automated-Resource-Leveling-and-Scheduling-LAIKA-2020">Autodesk University</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=ZU_1gIjRMps">Autodesk Vision Series</a></li>
+                        </ul>
+                        <a href="https://www.youtube.com/watch?v=ZU_1gIjRMps">
+                            <img class="project-media" src="img/software/laika-scheduling.webp"
+                                 alt="LAIKA scheduling tool — stacked-area resource view, task table, and Gantt chart">
+                        </a>
                     </div>
-                </div>
-                <br>
-                <div class="row">
 
-
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <img src="img/software_small/souschefbot.jpg" width="100%" alt="">
-                            <h4>SousChefBot
-                            </h4>
-                            <p>
-                                A demo of a recipe website featuring Alexa-esque voice commands. Used
-                                <a href="https://wit.ai/">wit.ai API</a>
-                                and
-                                <a href="https://www.talater.com/annyang/">annyang</a>. Built as part of a
-                                Human-Computer
-                                Interaction class.
-                            </p>
-                            <br>
-                            <br>
-                            <br>
+                    <div class="project">
+                        <h4><a href="https://github.com/Pantsworth/slit_scanner_darkly">SlitScannr</a></h4>
+                        <p>
+                            A user-friendly realization of
+                            <a href="https://en.wikipedia.org/wiki/Slit-scan_photography">slitscan imaging</a> &mdash;
+                            in which each vertical column of pixels in the image represents the same place, at a
+                            different time.
+                        </p>
+                        <div class="slitscans">
+                            <img src="img/software/slitscans/train_width_720.gif" alt="Slit-scan (width) of a train">
+                            <img src="img/software/slitscans/train_height_720.gif" alt="Slit-scan (height) of a train">
                         </div>
                     </div>
 
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <img src="img/software_small/gone_by_dawn.jpg" width="100%" alt="">
-                            <h4>
-                                Gone By Dawn
-                            </h4>
-                            <p>
+                    <div class="project">
+                        <h4><a href="https://github.com/Pantsworth/temporal-median-video">Temporal Median Video</a></h4>
+                        <p>
+                            Python program for processing a temporal median filter effect across a set of frames
+                            from a video.
+                        </p>
+                        <iframe class="project-media" src="https://www.youtube.com/embed/Yhy1uc9s8IU"
+                                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
 
-                                Team project for EECS 370: Game Design. A fast-paced top-down multiplayer game about
-                                graverobbing. Developed on a 4-person
-                                team as part of a game design class. I focused on UI development,
-                                animation,
-                                and aesthetics – all the visuals in the game were created using stopmotion animation on
-                                real
-                                clay objects, which were later converted to sprites for Unity.
-                            </p>
-                        </div>
+                    <div class="project">
+                        <h4>SousChefBot</h4>
+                        <p>
+                            A demo of a recipe website featuring Alexa-esque voice commands. Used
+                            <a href="https://wit.ai/">wit.ai API</a> and
+                            <a href="https://www.talater.com/annyang/">annyang</a>. Built as part of a
+                            Human-Computer Interaction class.
+                        </p>
+                        <img class="project-media" src="img/software_small/souschefbot.jpg" alt="SousChefBot recipe demo">
                     </div>
-                    <div class="col-sm-6">
+
+                    <div class="project">
+                        <h4>Gone By Dawn</h4>
+                        <p>
+                            Team project for EECS 370: Game Design. A fast-paced top-down multiplayer game about
+                            graverobbing. Developed on a 4-person team as part of a game design class. I focused
+                            on UI development, animation, and aesthetics &ndash; all the visuals in the game were
+                            created using stopmotion animation on real clay objects, which were later converted to
+                            sprites for Unity.
+                        </p>
+                        <img class="project-media" src="img/software_small/gone_by_dawn.jpg" alt="Gone By Dawn game">
                     </div>
+
                 </div>
-
             </div>
-            <br>
-            <br>
-            <br>
         </div>
     </section>
 {% endblock %}

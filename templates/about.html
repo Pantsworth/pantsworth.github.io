@@ -1,62 +1,20 @@
 {% extends "base.html" %}
 {% block head %}
     {{ super() }}
-    {% block title %}{{ name.capitalize() }}{% endblock %}
+    {% block title %}Michael Nowakowski{% endblock %}
+    {# About content now lives on the landing page; redirect any old links there. #}
+    <link rel="canonical" href="index.html">
+    <meta http-equiv="refresh" content="0; url=index.html">
+    <script>window.location.replace("index.html");</script>
 {% endblock %}
 {% block body %}
     {{ super() }}
-    <section id="about" style="padding-top: 5%;">
-        <div class="container">
-            <br>
-            <div class="row">
-                <div class="col-lg-10">
-                    <img  class = "people_img"  src="img/me2.jpg" width="90%" alt="PICTURE OF ME">
-                    <br><br>
-                    <h2 class="marker-text">ABOUT</h2>
-                    <p>Greetings! I'm a Senior Software Engineer in Apple's Vision Products Group in Seattle WA, where I build the tools, pipelines, and
-                        developer platforms that help artists and engineers make 3D content for AR/VR products.<br><br>
-                        Before Apple, I was a Lead Technical Director at <a href="http://laika.com/">LAIKA</a> 
-                        in Portland, Oregon. I worked with folks all over the studio to maintain and develop workflows related to scheduling, fabrication, and work tracking.</p>
-                        <b>Languages -</b> Python, Bash/Zsh, JavaScript &amp; TypeScript, and a little Rust and Swift<br>
-                        <b>Tools -</b> <a href="https://github.com/AcademySoftwareFoundation/rez">Rez</a>, FastAPI,
-                        Docker, Claude Code, Kubernetes, Jenkins, Sentry, Qt (PySide), Vue, React,
-                        <a href="https://www.autodesk.com/solutions/creative-project-management">Flow Production Tracking (formerly Shotgrid / Shotgun)</a>,
-                        and USD
-                    </p>
-                    <br>
-                    <h3>EDUCATION</h3>
-                    <p><a href="http://www.northwestern.edu/">Northwestern University</a> - Bachelor's in Computer Science and Film (double major).</p>
-                    <p>Coursework: Human Computer Interaction, Computational Photography, Machine Learning,
-                        Databases, Algorithms, NLP, 3D Graphics, Cinematography, Directing, and Editing.</p>
-                    <br>
-                    <h3>Talks</h3>
-                    <a href="https://www.autodesk.com/autodesk-university/class/Automated-Resource-Leveling-and-Scheduling-LAIKA-2020">
-                        Automating Scheduling and Resource Optimization at LAIKA
-                    </a> - Autodesk University
-                    <br><a href="https://dl.acm.org/doi/10.1145/3388767.3407321">
-                    Automated Resource Leveling and Scheduling at LAIKA
-                    </a> - ACM SIGGRAPH 2020 Production Session
-                    <br><a href="https://www.youtube.com/watch?v=ZU_1gIjRMps">
-                    Automated Resource Leveling &amp; Scheduling at LAIKA
-                    </a> - Autodesk Vision Series
-                    <br><br>
-                    <br><h3>INTERESTS</h3>
-                    <p><b>Code</b>   (especially imaging, creative AI, and machine learning)</p>
-                    <p><b>Photography</b>   (photojournalism, illustrative, portrait, and experimental)</p>
-                    <p><b>Food</b>   (homebrewing, bread, pizza, pasta, etc)</p>
-                    <p><b>The Outdoors</b> (hiking, kayaking, camping, foraging, climbing)</p>
-                    <p><b>Filmmaking</b>   (directing and cinematography)</p>
-                    <br><h3>CONTACT</h3>
-                    <p><b>michael.j.nowakowski@gmail.com</b> |
-                        <a href="https://www.instagram.com/michael__nowakowski/">Instagram</a> |
-                        <a href="https://github.com/Pantsworth">GitHub</a> |
-                        <a href="https://www.linkedin.com/in/michael-j-nowakowski/">LinkedIn</a></p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div style="padding-top: 96px;" class="container">
+        <p>
+            This page has moved &mdash; redirecting to the <a href="index.html">home page</a>&hellip;
+        </p>
+    </div>
 {% endblock %}
 
 {% block scripts %}
-    {{ super() }}
 {% endblock %}

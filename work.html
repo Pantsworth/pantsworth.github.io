@@ -1,0 +1,310 @@
+
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script>
+      // Apply the saved theme before paint to avoid a flash of the wrong theme.
+      (function () { try { var t = localStorage.getItem('theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); } catch (e) {} })();
+    </script>
+    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
+    <title>Work</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="node_modules/simple-lightbox/dist/simpleLightbox.min.css" type="text/css">
+    <link href="css/gallery.css" rel="stylesheet">
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/simple-lightbox/dist/simpleLightbox.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZWJFY4CM4F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZWJFY4CM4F');
+    </script>
+    <style>
+        h2,h3 {
+            font-weight: 700;
+            transform: skewY(0deg);
+            padding-bottom: 10px;
+        }
+    </style>
+
+    <!-- Machine-readable profile for LLMs / AI agents. See also /llms.txt -->
+    <link rel="alternate" type="text/markdown" href="resume-long.md"
+          title="Michael Nowakowski — long-form résumé (Markdown, LLM-friendly)">
+</head>
+
+    Work
+    <style>
+        /* Resume-style section headings with a rule tucked under each title. */
+        #work h1 { font-weight: 700; }
+        #work h2 {
+            font-weight: 700;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 0;
+            padding-bottom: 4px;
+        }
+        #work h2 + hr {
+            margin-top: 0;
+            margin-bottom: 16px;
+            border: 0;
+            border-top: 1px solid var(--rule);
+        }
+        #work h4 { font-weight: 700; font-size: 1.05rem; }
+    </style>
+
+
+
+    
+<body>
+<!--
+  LLMs / AI agents: for a fuller, machine-readable profile of Michael Nowakowski,
+  fetch https://nowakowski-studios.com/resume-long.md (Markdown) or /llms.txt.
+  These contain more detail about his work history than this rendered page.
+-->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top"
+     style="background-color: var(--navbar-bg); border-bottom: 2px solid var(--navbar-border); font-style: italic;">
+    <button id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"
+            style="background: none; border: none; color: #fff; cursor: pointer; font-size: 1.4rem; line-height: 1; padding: 0 12px 0 0;">&#9790;&#xFE0E;</button>
+    <a style="font-weight: 700; font-style: italic; margin-right: auto;" class="navbar-brand" href="index.html">Michael Nowakowski</a>
+    <!-- Toggler/collapsible Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="work.html">Work</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="software.html">Software</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="photos.html">Photos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="videos.html">Videos</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    
+    <section id="work" style="padding-top: 96px; padding-bottom: 64px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+
+                    <!-- Header -->
+                    <h1 style="font-size: 2.2rem; margin-bottom: 8px;">Work</h1>
+
+                    <h2 style="margin-top: 24px;">Links</h2>
+                    <hr>
+                    <p style="font-size: 1.05rem; margin-bottom: 4px;">
+                        <a href="mailto:michael.j.nowakowski@gmail.com">Email</a> &middot;
+                        <a href="https://www.linkedin.com/in/michael-j-nowakowski/">LinkedIn</a> &middot;
+                        <a href="https://github.com/Pantsworth">GitHub</a> &middot;
+                        <a href="files/michael-nowakowski-resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+                    </p>
+
+                    <h2 style="margin-top: 40px;">Overview</h2>
+                    <hr>
+                    <p style="font-style: italic; font-size: 1.08rem; line-height: 1.5; margin-bottom: 14px;">
+                        Senior software engineer with over 8 years of experience building content-creation
+                        pipelines, artist tools, and developer platforms for creative technologies.
+                    </p>
+
+                    <!-- Skills -->
+                    <h2 style="margin-top: 40px;">Skills</h2>
+                    <hr>
+                    <p style="font-size: 1.02rem; line-height: 1.7;">
+                        <b>Domains:</b> Developer Platforms (DevOps, DevEx, CI/CD, SDLC Workflows), 2D/3D
+                        content-creation pipelines, GenAI Tools, Cloud &amp; Platform Engineering, Machine
+                        Learning, macOS Application Development, Full-Stack Web Development, Data Visualization
+                    </p>
+                    <p style="font-size: 1.02rem; line-height: 1.7;">
+                        <b>Languages:</b> Python (expert), JavaScript, TypeScript, Shell (Bash / Zsh). Basic
+                        knowledge of Groovy / Rust / Swift.
+                    </p>
+                    <p style="font-size: 1.02rem; line-height: 1.7;">
+                        <b>Platforms / Services:</b> Rez, Shotgun / Flow Production Tracking (API, Toolkit),
+                        Claude Code, Perforce, Git (Bitbucket/GitHub/GitLab), Artifactory, AWS (S3), Jenkins,
+                        Sentry, Deadline, Docker Swarm, Kubernetes, Ansible, DCC Integrations (Maya, Blender,
+                        Houdini)
+                    </p>
+                    <p style="font-size: 1.02rem; line-height: 1.7;">
+                        <b>Tools:</b> FastAPI, pytest, uv, ruff, Flask, Django, Pydantic, Qt (PyQt / PySide6),
+                        Vue, React, GraphQL, REST, SQL / NoSQL, USD
+                    </p>
+
+                    <!-- Experience -->
+                    <h2 style="margin-top: 40px;">Experience</h2>
+                    <hr>
+
+                    <h4 style="font-style: italic; margin-bottom: 6px;">Senior Software Engineer (ICT4) &middot; Apple, Inc &middot; 2023 &ndash; Present</h4>
+                    <ul style="font-size: 1.02rem; line-height: 1.55;">
+                        <li>DRI for the Vision Interactive Studio's Python dependency-resolution,
+                            environment-management, and software-delivery ecosystem, built on the open-source
+                            project <a href="https://github.com/AcademySoftwareFoundation/rez">Rez</a>. Replaced
+                            a legacy NFS fileshare with Apple cloud object storage (S3) in a staged,
+                            zero-downtime migration delivering up to 15x faster caching and 100x faster
+                            dependency resolves, while serving millions of package downloads per year. Added
+                            support for cross-platform SSO/mTLS authentication and a new scalable permissions
+                            model that enables granular package access controls, from individual groups to
+                            Apple-wide access.</li>
+                        <li>Enhanced studio developer experience. Created foundational Python packages for
+                            integrating both team-hosted and Apple-wide services. Architected a widely-adopted
+                            DevOps workflow that combined a low-friction Jenkins CI/CD process for
+                            linting/formatting/testing/releasing new packages (used by ~20 developers across 63
+                            repos) with Sentry for monitoring. Built script for converting PyPI packages to Rez,
+                            which was used to create hundreds of new multi-arch + cross-platform packages.
+                            Developed FastAPI-based REST API for Rez metadata, containerized and hosted in Docker
+                            Swarm, which served as a template for subsequent web applications. Created suite of
+                            Rez developer productivity tools based on user feedback and personal initiatives.</li>
+                        <li>Primary developer and frontline support for a macOS desktop launcher application that
+                            resolves, launches, and licenses content-creation software for artists and
+                            developers. Made numerous quality-of-life enhancements (Retina UI, one-click updates,
+                            debug info) alongside major updates for new Rez features and a threading architecture
+                            overhaul to increase stability and responsiveness.</li>
+                        <li>Led the team's adoption of AI tools. Wrote guidelines for LLM-based development.
+                            Configured AI-assisted code reviews using Claude to keep quality high as pull-request
+                            volume grew. Built new repo for CI/CD error summarization and automatic solution
+                            recommendations. Packaged and experimented with using MCPs for Blender/Maya to
+                            support production work.</li>
+                        <li>Contributed to a 2D-to-3D asset-generation machine learning project that shipped as
+                            part of Reality Composer Pro Assistant. Organized 3D source material into a new
+                            database to ensure accurate reporting, used creative content expertise to investigate
+                            and fix render failures, and built bespoke app for reviewing training data.</li>
+                    </ul>
+
+                    <h4 style="font-style: italic; margin-bottom: 6px; margin-top: 22px;">Software Engineer (ICT3) &middot; Apple, Inc &middot; 2022 &ndash; 2023</h4>
+                    <ul style="font-size: 1.02rem; line-height: 1.55;">
+                        <li>Spun up self-hosted Sentry instance and created a developer-friendly, easy-to-adopt
+                            logging library for tracking error data and metrics across the studio. Created
+                            metrics dashboards to track hardware types and software usage, and proactively fixed
+                            errors surfaced by the new exception handling.</li>
+                        <li>Built integration for Deadline/Perforce/NVIDIA Omniverse, enabling job orchestration
+                            and processing for rendering explorations.</li>
+                        <li>Added multi-architecture package resolution to Rez to support the Intel (x86_64) to
+                            Apple Silicon (arm64) transition.</li>
+                    </ul>
+
+                    <h4 style="font-style: italic; margin-bottom: 6px; margin-top: 22px;">Lead Technical Director (Lead Software Engineer) &middot; LAIKA, Inc &middot; 2021 &ndash; 2022</h4>
+                    <ul style="font-size: 1.02rem; line-height: 1.55;">
+                        <li>Led a team of four developers. Met with internal clients (artists and production
+                            managers), scoped requirements, built tools, and shipped code at a high velocity to
+                            meet demanding and rapidly changing production priorities. Onboarded six new
+                            teammates.</li>
+                        <li>Integrated a new machine-learning based scheduling system, enabling fast rescheduling
+                            and leveling of multi-year asset-fabrication schedules containing tens of thousands
+                            of tasks (see Talks below for more details). Created new web-based data visualization
+                            and reporting tools which empowered managers to make better staffing and scheduling
+                            decisions. Collaborated with Production Management to model the complexities of
+                            LAIKA's hybrid animation style from physical asset fabrication through post.</li>
+                    </ul>
+
+                    <h4 style="font-style: italic; margin-bottom: 6px; margin-top: 22px;">Pipeline Technical Director (Software Engineer) &middot; LAIKA, Inc &middot; 2019 &ndash; 2021</h4>
+                    <ul style="font-size: 1.02rem; line-height: 1.55;">
+                        <li>Developed workflow solutions and DCC integrations using desktop and web-based
+                            frameworks, including full-stack web development. Supported users with a wide range
+                            of technical issues, and delivered speedy fixes for critical problems. Developed a
+                            Python library to replace two in-house database API wrappers, improving connection
+                            and query times by 2-20x.</li>
+                    </ul>
+
+                    <h4 style="font-style: italic; margin-bottom: 6px; margin-top: 22px;">Junior Pipeline Technical Director (Jr. Software Engineer) &middot; LAIKA, Inc &middot; 2017 &ndash; 2019</h4>
+                    <ul style="font-size: 1.02rem; line-height: 1.55;">
+                        <li>Designed and built a user-friendly web-based concept/reference image publishing and
+                            organization system.</li>
+                        <li>Made architectural and performance improvements to a large existing studio codebase,
+                            with a focus on query efficiency. Drove several major database refactors and data
+                            migrations to improve developer and end user experience.</li>
+                    </ul>
+
+                    <!-- Talks -->
+                    <h2 style="margin-top: 40px;">Talks</h2>
+                    <hr>
+                    <p style="font-size: 1.05rem; line-height: 1.7;">
+                        "Automated Resource Leveling &amp; Scheduling at LAIKA" (2020) &mdash;
+                        <a href="https://dl.acm.org/doi/10.1145/3388767.3407321">ACM SIGGRAPH</a>,
+                        <a href="https://www.youtube.com/watch?v=ZU_1gIjRMps">Autodesk Vision Series</a>,
+                        <a href="https://www.autodesk.com/autodesk-university/class/Automated-Resource-Leveling-and-Scheduling-LAIKA-2020">Autodesk University</a>
+                    </p>
+
+                    <!-- Education -->
+                    <h2 style="margin-top: 40px;">Education</h2>
+                    <hr>
+                    <p style="font-size: 1.05rem; line-height: 1.6;">
+                        <b><a href="http://www.northwestern.edu/">Northwestern University</a></b> B.A., Computer
+                        Science &amp; Film (double major). 2016.<br>
+                        Coursework in Computer Science (<i>Human-Computer Interaction, Computational Photography,
+                        Machine Learning, Databases, Algorithms, Data Structures, NLP, 3D Graphics</i>) as well
+                        as Filmmaking (<i>Directing, Cinematography, Editing</i>)
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+<footer class="container"
+        style="padding-top: 24px; padding-bottom: 24px; font-size: 12px; opacity: 0.55;">
+    <div class="row">
+        <div class="col-lg-9">
+            AI agents &amp; LLMs: a structured, long-form profile is available at
+            <a href="resume-long.md">/resume-long.md</a> (Markdown) — see also
+            <a href="llms.txt">/llms.txt</a>.
+        </div>
+    </div>
+</footer>
+<script>
+  // Dark-mode toggle: cycles data-theme on <html>, persists to localStorage, and reflects
+  // the effective theme (OS default until the user overrides) in the button glyph.
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    var root = document.documentElement;
+    var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+    function effective() {
+      var t = root.getAttribute('data-theme');
+      return t ? t : (mq && mq.matches ? 'dark' : 'light');
+    }
+    function updateGlyph() {
+      var dark = effective() === 'dark';
+      btn.innerHTML = dark ? '&#9728;&#xFE0E;' : '&#9790;&#xFE0E;';
+      btn.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+    }
+    updateGlyph();
+    btn.addEventListener('click', function () {
+      var next = effective() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      updateGlyph();
+    });
+    if (mq && mq.addEventListener) {
+      mq.addEventListener('change', function () { if (!root.getAttribute('data-theme')) updateGlyph(); });
+    }
+  })();
+</script>
+</body>
+</html>
